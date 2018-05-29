@@ -1,0 +1,87 @@
+/* ==================
+basics
+==================*/
+
+html, body {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* ==================
+header
+==================*/
+
+.navbar {
+    height: 40px;
+}
+
+
+
+/* ==================
+tool panel
+==================*/
+
+.tool-panel {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    background-color: rgb(161, 160, 160);
+}
+
+/* ==================
+color picker
+==================*/
+
+#color-input {
+    display: none;
+    z-index: 10;
+  }
+  #color-label {
+    margin: 5px;
+    /* position: absolute; */
+    height: 30px;
+    width: 50px;
+    background-color: white;
+    z-index: 10;
+  } 
+  #color-input:checked ~ #color-picker {
+    opacity: 1;
+  }
+  #color-picker {
+    /* position: absolute; */
+    /* left: 70px;  */
+    background-color: white;
+    height: 160px;
+    width: 198px;
+    border: solid 1px #ccc;
+    opacity: 0;
+    padding: 5px;
+    z-index: 10;
+  }
+  canvas:hover {
+    cursor: crosshair;
+  }
+
+
+/*==================
+canvas
+==================*/
+
+.canvas {
+    border:1px black solid;
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    left: 60px;
+    right: 0;
+    
+}
+
+#canvas-draft {
+    background-color: transparent;
+}
+
