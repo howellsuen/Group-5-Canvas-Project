@@ -6,7 +6,7 @@ html, body {
     margin: 0px;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     font-family: Arial, sans-serif;
 }
 
@@ -73,7 +73,7 @@ canvas
 
 .canvas {
     border:1px black solid;
-    position: absolute;
+    position: auto;
     top: 40px;
     bottom: 0;
     left: 60px;
