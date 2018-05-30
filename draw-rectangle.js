@@ -7,12 +7,12 @@ class DrawingRectangle extends PaintFunction{
     }
     
     onMouseDown(coord,event){
-        this.contextReal.fillStyle = "#f44";
+        this.contextReal.fillStyle = rgbaColor;
         this.origX = coord[0];
         this.origY = coord[1];
     }
     onDragging(coord,event){
-        this.contextDraft.fillStyle = "#f44";
+        this.contextDraft.fillStyle = rgbaColor;
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         // ctx.fillRect(x, y, width, height);
         this.contextDraft.fillRect(this.origX, this.origY, coord[0]- this.origX, coord[1] - this.origY)
@@ -36,12 +36,12 @@ class DrawingRectangleOutline extends PaintFunction{
     }
     
     onMouseDown(coord,event){
-        this.contextReal.strokeStyle = "#f44";
+        this.contextReal.strokeStyle = rgbaColor;
         this.origX = coord[0];
         this.origY = coord[1];
     }
     onDragging(coord,event){
-        this.contextDraft.strokeStyle = "#f44";
+        this.contextDraft.strokeStyle = rgbaColor;
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         // ctx.fillRect(x, y, width, height);
         this.contextDraft.strokeRect(this.origX, this.origY, coord[0]- this.origX, coord[1] - this.origY)

@@ -9,11 +9,35 @@ var width2 = colorStrip.width;
 var height2 = colorStrip.height;
 
 var colorLabel = document.getElementById('color-label');
+var colorPicker = document.getElementById('color-picker');
+var rgbField = document.getElementById('rgb-field');
+var rgbInput = document.getElementsByClassName('input');
+var R = document.getElementById('rgb-r');
+var G = document.getElementById('rgb-g');
+var B = document.getElementById('rgb-b');
+
+//show and hide color
+window.onclick = function(e) {
+  
+  if (e.target == colorLabel) {
+    colorPicker.style.display = "block";
+  } 
+  else if (e.target !== colorPicker && e.target !== colorBlock && e.target !== colorStrip && e.target !== rgbInput) {
+    colorPicker.style.display = "none";
+    e.stopPropagation();
+  }
+}
 
 var x = 0;
 var y = 0;
 var drag = false;
+
 var rgbaColor = 'rgba(255,0,0,1)';
+var matchColors = /rgba\((\d{1,3}), (\d{1,3}),(\d{1,3}),(\d{1,3})\)/g;
+var match = rgbaColor.match(matchColors);
+// R.value = match[0];
+// G.value = match[1];
+// B.value = match[2];
 
 ctx1.rect(0, 0, width1, height1);
 fillGradient();
@@ -76,6 +100,8 @@ function changeColor(e) {
   var imageData = ctx1.getImageData(x, y, 1, 1).data;
   rgbaColor = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
   colorLabel.style.backgroundColor = rgbaColor;
+  
+  
 }
 
 colorStrip.addEventListener("click", click, false);

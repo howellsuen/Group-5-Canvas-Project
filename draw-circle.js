@@ -12,7 +12,7 @@ class DrawingCircle extends PaintFunction{
         this.origY = coord[1];
     }
     onDragging(coord,event){
-        this.contextDraft.fillStyle = "#44C9DD";
+        this.contextDraft.fillStyle = rgbaColor;
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextDraft.beginPath();
         this.contextDraft.arc(this.origX, this.origY, Math.abs(coord[0]- this.origX), 0, 2 * Math.PI, false);
@@ -25,7 +25,7 @@ class DrawingCircle extends PaintFunction{
     onMouseUp(coord){
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextReal.arc(this.origX, this.origY, Math.abs(coord[0]- this.origX), 0, 2 * Math.PI, false);
-        this.contextReal.fillStyle = "#44C9DD";
+        this.contextReal.fillStyle = rgbaColor;
         this.contextReal.closePath();
         this.contextReal.fill();
         
