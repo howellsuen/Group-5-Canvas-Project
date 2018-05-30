@@ -10,6 +10,10 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 /* ==================
 header
 ==================*/
@@ -36,13 +40,15 @@ tool panel
 color picker
 ==================*/
 
-#color-label {
+.color-label {
     margin: 5px;
     height: 30px;
     width: 45px;
 } 
  
-#color-picker {
+#color-picker-fill,
+#color-picker-stroke,
+#color-picker-bg  {
     position: absolute;
     top: 270px;
     left: 65px; 
@@ -55,21 +61,21 @@ color picker
     display: none;
 }
 
-#color-block,
-#color-strip:hover {
+.color-block,
+.color-strip:hover {
     cursor: crosshair;
 }
 
 
-#rgb-field {
+.rgb-field {
     font-size: 12px;
 }
 
-#rgb-field input {
+.rgb-field input {
     margin-left: 5px;
-    margin-right: 10px;
+    margin-right: 5px;
     height: 20px;
-    width: 35px;
+    width: 40px;
 }
 
 /*==================

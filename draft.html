@@ -20,10 +20,10 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" id="reset" href="#">Reset</a>
+                    <a class="nav-link" id="reset">Reset</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Save</a>
+                    <a class="nav-link">Save</a>
                 </li>
                 </ul>
             </div>
@@ -33,28 +33,55 @@
             <span class="btn btn-primary" id="drawing-rectangle"><i class="fas fa-square"></i></span>
             <span class="btn btn-primary" id="drawing-rectangle-outline" ><i class="far fa-square"></i></span>
             <span class="btn btn-primary" id="drawing-circle" ><i class="fas fa-circle"></i></span>
+            <span class="btn btn-primary" id="drawing-circle-outline" ><i class="far fa-circle"></i></span>
             <span class="btn btn-primary" id="drawing-pencil" ><i class="fab fa-vine"></i></span>
-            <span class="btn btn-info" id="paint-bucket"><i class="fa fa-paint-brush"></i></span>
-            <span class="btn btn-danger" id="change-color"><i class="fas fa-palette"></i></span>
+            
+            <span class="btn btn-info" id="paint-bucket"><i class="fa fa-paint-brush"></i></span> 
+            <span class="btn btn-success" id="upload-image"><i class="fas fa-image"></i></span>
+            <span class="btn btn-success" id="add-text"><i class="fas fa-font"></i></span>
+            <span class="btn btn-success" id="line">Line</span>
+            <span class="btn btn-success" id="curve">Curve</span>
             
             <!-- fill color picker -->
-            <label for="color-input" id="color-label" style="background-color: red"></label>
-            <div id="color-picker">
-                <canvas id="color-block" height="150" width="150"></canvas>
-                <canvas id="color-strip" height="150" width="30"></canvas>
-                <div id="rgb-field">
-                    R<input class="input" id="rgb-r" type="number" min="0" max="255">
-                    G<input class="input" id="rgb-g" type="number" min="0" max="255">
-                    B<input class="input" id="rgb-b" type="number" min="0" max="255">
+            <label for="color-input"  id="fill" class="color-label" style="background-color: red"></label>
+            <div id="color-picker-fill">
+                <canvas id="color-block-fill" class="color-block" height="150" width="150"></canvas>
+                <canvas id="color-strip-fill" class="color-strip" height="150" width="30"></canvas>
+                <div class="rgb-field">
+                    R<input class="input" id="fill-r" type="number" min="0" max="255">
+                    G<input class="input" id="fill-g" type="number" min="0" max="255">
+                    B<input class="input" id="fill-b" type="number" min="0" max="255">
             
                 </div>
             </div>
             <!-- stroke color picker -->
-            <!-- <label for="color-input" class="color-label" style="background-color: black"></label>
-            <div class="color-picker">
-                <canvas class="color-block" height="150" width="150"></canvas>
-                <canvas class="color-strip" height="150" width="30"></canvas>
-            </div> -->
+            <label for="color-input"  id="stroke" class="color-label" style="background-color: black"></label>
+            <div id="color-picker-stroke">
+                <canvas id="color-block-stroke" class="color-block" height="150" width="150"></canvas>
+                <canvas id="color-strip-stroke" class="color-strip" height="150" width="30"></canvas>
+                <div class="rgb-field">
+                    R<input class="input" id="stroke-r" type="number" min="0" max="255">
+                    G<input class="input" id="stroke-g" type="number" min="0" max="255">
+                    B<input class="input" id="stroke-b" type="number" min="0" max="255">
+            
+                </div>
+            </div>
+            <!-- background color picker -->
+            <label for="color-input"  id="bg" class="color-label" style="background-color: black"></label>
+            <div id="color-picker-bg">
+                <canvas id="color-block-bg" class="color-block" height="150" width="150"></canvas>
+                <canvas id="color-strip-bg" class="color-strip" height="150" width="30"></canvas>
+                <div class="rgb-field">
+                    R<input class="input" id="bg-r" type="number" min="0" max="255">
+                    G<input class="input" id="bg-g" type="number" min="0" max="255">
+                    B<input class="input" id="bg-b" type="number" min="0" max="255">
+            
+                </div>
+            </div>
+
+            <span class="btn btn-danger" id="eraser"><i class="fas fa-eraser"></i></span>
+            <span class="btn btn-warning" id="undo"><i class="fas fa-undo"></i></span>
+            <span class="btn btn-warning" id="redo"><i class="fas fa-redo"></i></span>
         </div>
 
         <!-- drawing stage -->
@@ -75,8 +102,10 @@
         <script src="pencil.js"></script>
         <script src="draw-rectangle.js"></script>
         <script src="draw-circle.js"></script>
-        <script src="color-picker.js"></script>
-        <script src="funciton.js"></script>
+        <script src="color-picker-fill.js"></script>
+        <script src="color-picker-stroke.js"></script>
+        <script src="color-picker-bg.js"></script>
+        <script src="eraser.js"></script>
 
 
         <script type='text/javascript'>
@@ -93,6 +122,14 @@
             $('#drawing-circle').click(()=>{
                 currentFunction = new DrawingCircle(contextReal,contextDraft);
             });
+            $('#eraser').click(()=>{
+                currentFunction = new Eraser(contextReal,contextDraft);
+            });
+            $('#reset').click(()=>{
+                contextReal.fillStyle = "white";
+                contextReal.fillRect(0,0,canvasReal.width,canvasReal.height);
+            });
+
             currentFunction = new DrawingPencil(contextReal,contextDraft);    
 
         </script>

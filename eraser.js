@@ -1,14 +1,14 @@
-class DrawingPencil extends PaintFunction{
+class Eraser extends PaintFunction{
     constructor(contextReal){
         super();
         this.context = contextReal;            
     }
     
     onMouseDown(coord,event){
-        this.context.strokeStyle = rgbaColor;
+        this.context.strokeStyle = "white";
         this.context.lineJoin = "round";
         this.context.lineCap = "round";
-        this.context.lineWidth = 5;
+        this.context.lineWidth = 10;
         this.context.beginPath();
         this.context.moveTo(coord[0],coord[1]);
         this.draw(coord[0],coord[1]);
