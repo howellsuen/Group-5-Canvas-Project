@@ -189,6 +189,12 @@
             currentFunction.downloadCanvas(this, 'canvas-real', 'test.png');
             console.log(this);
         });
+        $('#undo').click(function () {
+            undo(this, 'canvas-real');
+        });
+        $('#redo').click(function () {
+            redo(this, 'canvas-real');
+        });
 
         currentFunction = new DrawingPencil(contextReal, contextDraft);
 

@@ -9,6 +9,10 @@ canvasDraft.width = window.innerWidth;
 canvasDraft.height = window.innerHeight;
 
 let currentFunction;
+
+let savehistory = [];
+let currentIndex = 0;
+
 let dragging = false;
 
 $('#canvas-draft').mousedown(function(e){
@@ -32,6 +36,7 @@ $('#canvas-draft').mouseup(function(e){
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
     currentFunction.onMouseUp([mouseX,mouseY],e);
+    snap();
 });
 
 $('#canvas-draft').mouseleave(function(e){
@@ -46,6 +51,40 @@ $('#canvas-draft').mouseenter(function(e){
     let mouseY = e.pageY - this.offsetTop;
     currentFunction.onMouseEnter([mouseX,mouseY],e);
 });
+
+function snap() {
+    var snap = document.getElementById('canvas-real').toDataURL();
+    savehistory.push(snap);
+    currentIndex = savehistory.length - 1;
+    console.log('snap');
+    console.log('HISTORY: ' + savehistory.length);
+}
+
+function redo(link, canvas) {
+    currentIndex++;
+    link.href = savehistory[currentIndex];
+    link.download = 'watch_history_lastTwo.png';
+
+    var img = new Image();
+    img.src = savehistory[currentIndex];
+    img.onload = function () {
+        contextReal.clearRect(0,0,canvasDraft.width,canvasDraft.height);
+        contextReal.drawImage(img, 0, 0, canvasDraft.width, canvasDraft.height);
+    };
+}
+
+function undo(link, canvas) {
+    currentIndex--;
+    link.href = savehistory[currentIndex];
+    link.download = 'watch_history_lastTwo.png';
+
+    var img = new Image();
+    img.src = savehistory[currentIndex];
+    img.onload = function () {
+        contextReal.clearRect(0,0,canvasDraft.width,canvasDraft.height);
+        contextReal.drawImage(img, 0, 0, canvasDraft.width, canvasDraft.height);
+    };
+}
 
 class PaintFunction{
     constructor(){}
