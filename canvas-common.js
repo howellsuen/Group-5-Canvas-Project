@@ -18,6 +18,11 @@ let dragging = false;
 //brushsize
 let brushSlider = document.getElementById("brushSlider");
 let brushSize = 5;
+
+function initCanvas(){
+    snap();
+}
+
 brushSlider.addEventListener("change", function() {
     brushSize = brushSlider.value;
 });
@@ -73,32 +78,6 @@ function snap() {
     console.log('snap');
     console.log('HISTORY: ' + savehistory.length);
 }
-
-// function redo(link, canvas) {
-//     currentIndex++;
-//     link.href = savehistory[currentIndex];
-//     link.download = 'watch_history_lastTwo.png';
-
-//     var img = new Image();
-//     img.src = savehistory[currentIndex];
-//     img.onload = function() {
-//         contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-//         contextReal.drawImage(img, 0, 0, canvasDraft.width, canvasDraft.height);
-//     };
-// }
-
-// function undo(link, canvas) {
-//     currentIndex--;
-//     link.href = savehistory[currentIndex];
-//     link.download = 'watch_history_lastTwo.png';
-
-//     var img = new Image();
-//     img.src = savehistory[currentIndex];
-//     img.onload = function() {
-//         contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-//         contextReal.drawImage(img, 0, 0, canvasDraft.width, canvasDraft.height);
-//     };
-// }
 
 class PaintFunction {
     constructor() {}

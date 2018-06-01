@@ -136,8 +136,8 @@
     <script src="draw-rectangle.js"></script>
     <script src="draw-circle.js"></script>
     <script src="color-picker-fill.js"></script>
-    <script src="color-picker-stroke.js"></script>
-    <script src="color-picker-bg.js"></script>
+    <!-- <script src="color-picker-stroke.js"></script> -->
+    <!-- <script src="color-picker-bg.js"></script> -->
     <script src="eraser.js"></script>
     <script src="download.js"></script>
     <script src="draw-history.js"></script>
@@ -149,14 +149,14 @@
         var canvas = document.getElementById('canvas-real'); // Get Canvas Real
         var ctx = canvas.getContext('2d'); // Get Context Real
 
+        initCanvas();
+
         function handleImage(e) {
             var reader = new FileReader();
-            reader.onload = function(event) {
+            reader.onload = function (event) {
                 var img = new Image();
-                img.onload = function() {
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    ctx.drawImage(img, 0, 0);
+                img.onload = function () {
+                    ctx.drawImage(img, canvas.width*0.5 - img.width*0.5, canvas.height*0.5 - img.height*0.5);
                 }
                 img.src = event.target.result;
             }
@@ -197,6 +197,7 @@
             contextReal.clearRect(0, 0, canvasReal.width, canvasReal.height);
             contextDraft.clearRect(0, 0, canvasReal.width, canvasReal.height);
             savehistory = [];
+            initCanvas();
         });
         $('#download').click(function() {
             currentFunction = new Download(contextReal);
@@ -206,12 +207,10 @@
         $('#undo').click(function() {
             currentFunction = new DrawHistory(contextReal);
             currentFunction.undo();
-            // undo(this, 'canvas-real');
         });
         $('#redo').click(function() {
             currentFunction = new DrawHistory(contextReal);
             currentFunction.redo();
-            // redo(this, 'canvas-real');
         });
         $('#paint-bucket').click(() => {
             currentFunction = new PaintBucket(contextReal, contextDraft);
