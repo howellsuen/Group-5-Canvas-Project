@@ -3,8 +3,8 @@ class BezierCurve extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        this.dPoint = {}
-        this.drag
+        this.dPoint = {};
+        this.drag;
         this.point = {
             p1: {
                 x: 100,
@@ -22,7 +22,7 @@ class BezierCurve extends PaintFunction {
                 x: 300,
                 y: 100
             }
-        }
+        };
         this.firstClick = true;
         this.style = {
             curve: {
@@ -41,7 +41,7 @@ class BezierCurve extends PaintFunction {
                 arc1: 0,
                 arc2: 2 * Math.PI
             }
-        }
+        };
     }
 
     onMouseDown(coord, event) {
@@ -51,7 +51,7 @@ class BezierCurve extends PaintFunction {
         }
         let e = {};
         e.x = coord[0];
-        e.y = coord[1]
+        e.y = coord[1];
         let dx, dy;
         for (let p in this.point) {
             dx = this.point[p].x - e.x;
@@ -66,7 +66,7 @@ class BezierCurve extends PaintFunction {
     onDragging(coord, event) {
         let e = {};
         e.x = coord[0];
-        e.y = coord[1]
+        e.y = coord[1];
         this.point[this.drag].x += e.x - this.dPoint.x;
         this.point[this.drag].y += e.y - this.dPoint.y;
         this.dPoint = e;
@@ -77,8 +77,8 @@ class BezierCurve extends PaintFunction {
     }
 
     startPoint(coord) {
-        let a = coord[0]
-        let b = coord[1]
+        let a = coord[0];
+        let b = coord[1];
         this.point = {
             p1: {
                 x: a - 40,
@@ -96,7 +96,7 @@ class BezierCurve extends PaintFunction {
                 x: a + 40,
                 y: b
             }
-        }
+        };
     }
 
     onDblClick() {

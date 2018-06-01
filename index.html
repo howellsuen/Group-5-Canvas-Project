@@ -63,10 +63,10 @@
             <img src="assets/line.png" alt="Line" style= width:24px height:20px;>
         </span>
         <span class="btn btn-info fa fa-success" id="quadratic-curve">
-            <img src="assets/curve.png" alt="Quadratic" style= width:20px height:20px;>
+            <img src="assets/quadratic.png" alt="Quadratic" style= width:20px height:20px;>
         </span>
         <span class="btn btn-info fa fa-success" id="bezier-curve">
-            <img src="assets/noun_799221_cc.png" alt="Bezier" style= width:20px height:20px;>
+            <img src="assets/bezier.png" alt="Bezier" style= width:20px height:20px;>
         </span>
         <button class="btn btn-default">
             <input type="range" name="brushsize" min="1" max="30" step="1" value="5" id="brushSlider">
@@ -130,7 +130,7 @@
 
     <script src="canvas-common.js"></script>
     <script src="pencil.js"></script>
-    <script src="drawing-line.js"></script>
+    <script src="draw-line.js"></script>
     <script src="quadratic-curve.js"></script>
     <script src="bezier-curve.js"></script>
     <script src="draw-rectangle.js"></script>
@@ -153,10 +153,10 @@
 
         function handleImage(e) {
             var reader = new FileReader();
-            reader.onload = function (event) {
+            reader.onload = function(event) {
                 var img = new Image();
-                img.onload = function () {
-                    ctx.drawImage(img, canvas.width*0.5 - img.width*0.5, canvas.height*0.5 - img.height*0.5);
+                img.onload = function() {
+                    ctx.drawImage(img, canvas.width * 0.5 - img.width * 0.5, canvas.height * 0.5 - img.height * 0.5);
                 }
                 img.src = event.target.result;
             }

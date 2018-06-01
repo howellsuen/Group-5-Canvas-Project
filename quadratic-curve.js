@@ -3,8 +3,8 @@ class QuadraticCurve extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        this.dPoint = {}
-        this.drag
+        this.dPoint = {};
+        this.drag;
         this.point = {
             p1: {
                 x: 100,
@@ -18,7 +18,7 @@ class QuadraticCurve extends PaintFunction {
                 x: 250,
                 y: 100
             }
-        }
+        };
         this.firstClick = true;
         this.style = {
             curve: {
@@ -37,7 +37,7 @@ class QuadraticCurve extends PaintFunction {
                 arc1: 0,
                 arc2: 2 * Math.PI
             }
-        }
+        };
     }
 
     onMouseDown(coord, event) {
@@ -47,7 +47,7 @@ class QuadraticCurve extends PaintFunction {
         }
         let e = {};
         e.x = coord[0];
-        e.y = coord[1]
+        e.y = coord[1];
         let dx, dy;
         for (let p in this.point) {
             dx = this.point[p].x - e.x;
@@ -62,7 +62,7 @@ class QuadraticCurve extends PaintFunction {
     onDragging(coord, event) {
         let e = {};
         e.x = coord[0];
-        e.y = coord[1]
+        e.y = coord[1];
         this.point[this.drag].x += e.x - this.dPoint.x;
         this.point[this.drag].y += e.y - this.dPoint.y;
         this.dPoint = e;
@@ -73,8 +73,8 @@ class QuadraticCurve extends PaintFunction {
     }
 
     startPoint(coord) {
-        let a = coord[0]
-        let b = coord[1]
+        let a = coord[0];
+        let b = coord[1];
         this.point = {
             p1: {
                 x: a - 50,
@@ -88,7 +88,7 @@ class QuadraticCurve extends PaintFunction {
                 x: a,
                 y: b
             }
-        }
+        };
     }
 
     onDblClick() {
