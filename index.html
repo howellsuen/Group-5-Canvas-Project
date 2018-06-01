@@ -49,19 +49,22 @@
             <i class="far fa-circle"></i>
         </span>
         <span class="btn btn-primary" id="drawing-pencil">
-            <i class="fab fa-vine"></i>
+            <i class="fa-pencil-alt"></i>
         </span>
 
         <span class="btn btn-info" id="paint-bucket">
             <i class="fa fa-paint-brush"></i>
         </span>
-        <!-- <span class="btn btn-success" id="upload-image">
-            <i class="fas fa-image"></i>
-        </span> -->
-        <input class="btn btn-success fas fa-image" id="upload" type="file" name="imageLoader" value="upload" />
+        
         <span class="btn btn-success" id="add-text">
-            <i class="fas fa-font"></i>
+                <i class="fas fa-font"></i>
         </span>
+
+        <label class="btn btn-success">
+                <input type="file"  id="upload" name="imageLoader" style="display: none">
+                <i class="fas fa-image"></i>
+        </label>
+
         <span class="btn btn-info fa fa-success" id="drawing-line">Drawing Line</span>
         <span class="btn btn-info fa fa-success" type="selector" id="quadratic-curve">Quadratic Curve</span>
         <span class="btn btn-info fa fa-success" id="bezier-curve">Bezier Curve</span>
@@ -70,42 +73,36 @@
         </button>
 
         <!-- fill color picker -->
-        <label for="color-input" id="fill" class="color-label" style="background-color: red"></label>
+        <label for="color-input"  id="fill" class="color-label"></label>
         <div id="color-picker-fill">
             <canvas id="color-block-fill" class="color-block" height="150" width="150"></canvas>
             <canvas id="color-strip-fill" class="color-strip" height="150" width="30"></canvas>
             <div class="rgb-field">
-                R
-                <input class="input" id="fill-r" type="number" min="0" max="255"> G
-                <input class="input" id="fill-g" type="number" min="0" max="255"> B
-                <input class="input" id="fill-b" type="number" min="0" max="255">
-
+                R<input class="input" id="fill-r" type="text" maxlength="3">
+                G<input class="input" id="fill-g" type="text" maxlength="3">
+                B<input class="input" id="fill-b" type="text" maxlength="3">
             </div>
         </div>
         <!-- stroke color picker -->
-        <label for="color-input" id="stroke" class="color-label" style="background-color: black"></label>
+        <label for="color-input"  id="stroke" class="color-label"></label>
         <div id="color-picker-stroke">
             <canvas id="color-block-stroke" class="color-block" height="150" width="150"></canvas>
             <canvas id="color-strip-stroke" class="color-strip" height="150" width="30"></canvas>
             <div class="rgb-field">
-                R
-                <input class="input" id="stroke-r" type="number" min="0" max="255"> G
-                <input class="input" id="stroke-g" type="number" min="0" max="255"> B
-                <input class="input" id="stroke-b" type="number" min="0" max="255">
-
+                R<input class="input" id="stroke-r" type="text">
+                G<input class="input" id="stroke-g" type="text">
+                B<input class="input" id="stroke-b" type="text">
             </div>
         </div>
         <!-- background color picker -->
-        <label for="color-input" id="bg" class="color-label" style="background-color: black"></label>
+        <label for="color-input"  id="bg" class="color-label"></label>
         <div id="color-picker-bg">
             <canvas id="color-block-bg" class="color-block" height="150" width="150"></canvas>
             <canvas id="color-strip-bg" class="color-strip" height="150" width="30"></canvas>
             <div class="rgb-field">
-                R
-                <input class="input" id="bg-r" type="number" min="0" max="255"> G
-                <input class="input" id="bg-g" type="number" min="0" max="255"> B
-                <input class="input" id="bg-b" type="number" min="0" max="255">
-
+                R<input class="input" id="bg-r" type="text">
+                G<input class="input" id="bg-g" type="text">
+                B<input class="input" id="bg-b" type="text">
             </div>
         </div>
 
@@ -146,7 +143,7 @@
     <script src="eraser.js"></script>
     <script src="download.js"></script>
     <script src="draw-history.js"></script>
-
+    <script src="paint-bucket.js"></script>
 
     <script type='text/javascript'>
         var imageLoader = document.getElementById('upload'); // Get Upload Button
@@ -218,7 +215,10 @@
             currentFunction.redo();
             // redo(this, 'canvas-real');
         });
-
+        $('#paint-bucket').click(() => {
+            currentFunction = new PaintBucket(contextReal, contextDraft);
+        });
+        
         currentFunction = new DrawingPencil(contextReal, contextDraft);
     </script>
 </body>
