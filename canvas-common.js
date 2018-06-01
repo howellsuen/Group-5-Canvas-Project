@@ -15,41 +15,55 @@ let currentIndex = 0;
 
 let dragging = false;
 
-$('#canvas-draft').mousedown(function(e){
+//brushsize
+let brushSlider = document.getElementById("brushSlider");
+let brushSize = 5;
+brushSlider.addEventListener("change", function() {
+    brushSize = brushSlider.value;
+});
+
+$('#canvas-draft').mousedown(function(e) {
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
-    currentFunction.onMouseDown([mouseX,mouseY],e);
+    currentFunction.onMouseDown([mouseX, mouseY], e);
     dragging = true;
 });
 
-$('#canvas-draft').mousemove(function(e){
+$('#canvas-draft').mousemove(function(e) {
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
-    if(dragging){
-        currentFunction.onDragging([mouseX,mouseY],e);
+    if (dragging) {
+        currentFunction.onDragging([mouseX, mouseY], e);
     }
-    currentFunction.onMouseMove([mouseX,mouseY],e);
+    currentFunction.onMouseMove([mouseX, mouseY], e);
 });
 
-$('#canvas-draft').mouseup(function(e){
+$('#canvas-draft').mouseup(function(e) {
     dragging = false;
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
-    currentFunction.onMouseUp([mouseX,mouseY],e);
+    currentFunction.onMouseUp([mouseX, mouseY], e);
     snap();
 });
 
-$('#canvas-draft').mouseleave(function(e){
+$('#canvas-draft').mouseleave(function(e) {
     dragging = false;
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
-    currentFunction.onMouseLeave([mouseX,mouseY],e);
+    currentFunction.onMouseLeave([mouseX, mouseY], e);
 });
 
-$('#canvas-draft').mouseenter(function(e){
+$('#canvas-draft').mouseenter(function(e) {
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
-    currentFunction.onMouseEnter([mouseX,mouseY],e);
+    currentFunction.onMouseEnter([mouseX, mouseY], e);
+});
+
+$('#canvas-draft').dblclick(function(e) {
+    dragging = false;
+    let mouseX = e.pageX - this.offsetLeft;
+    let mouseY = e.pageY - this.offsetTop;
+    currentFunction.onDblClick([mouseX, mouseY], e);
 });
 
 function snap() {
@@ -67,8 +81,8 @@ function redo(link, canvas) {
 
     var img = new Image();
     img.src = savehistory[currentIndex];
-    img.onload = function () {
-        contextReal.clearRect(0,0,canvasDraft.width,canvasDraft.height);
+    img.onload = function() {
+        contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         contextReal.drawImage(img, 0, 0, canvasDraft.width, canvasDraft.height);
     };
 }
@@ -80,18 +94,19 @@ function undo(link, canvas) {
 
     var img = new Image();
     img.src = savehistory[currentIndex];
-    img.onload = function () {
-        contextReal.clearRect(0,0,canvasDraft.width,canvasDraft.height);
+    img.onload = function() {
+        contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         contextReal.drawImage(img, 0, 0, canvasDraft.width, canvasDraft.height);
     };
 }
 
-class PaintFunction{
-    constructor(){}
-    onMouseDown(){}
-    onDragging(){}
-    onMouseMove(){}
-    onMouseUp(){}
-    onMouseLeave(){}
-    onMouseEnter(){}
-}    
+class PaintFunction {
+    constructor() {}
+    onMouseDown() {}
+    onDragging() {}
+    onMouseMove() {}
+    onMouseUp() {}
+    onMouseLeave() {}
+    onMouseEnter() {}
+    onDblClick() {}
+}
