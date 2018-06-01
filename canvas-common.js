@@ -11,7 +11,7 @@ canvasDraft.height = window.innerHeight;
 let currentFunction;
 
 let savehistory = [];
-let currentIndex = 0;
+// let currentIndex = 0;
 
 let dragging = false;
 
@@ -74,31 +74,31 @@ function snap() {
     console.log('HISTORY: ' + savehistory.length);
 }
 
-function redo(link, canvas) {
-    currentIndex++;
-    link.href = savehistory[currentIndex];
-    link.download = 'watch_history_lastTwo.png';
+// function redo(link, canvas) {
+//     currentIndex++;
+//     link.href = savehistory[currentIndex];
+//     link.download = 'watch_history_lastTwo.png';
 
-    var img = new Image();
-    img.src = savehistory[currentIndex];
-    img.onload = function() {
-        contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-        contextReal.drawImage(img, 0, 0, canvasDraft.width, canvasDraft.height);
-    };
-}
+//     var img = new Image();
+//     img.src = savehistory[currentIndex];
+//     img.onload = function() {
+//         contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+//         contextReal.drawImage(img, 0, 0, canvasDraft.width, canvasDraft.height);
+//     };
+// }
 
-function undo(link, canvas) {
-    currentIndex--;
-    link.href = savehistory[currentIndex];
-    link.download = 'watch_history_lastTwo.png';
+// function undo(link, canvas) {
+//     currentIndex--;
+//     link.href = savehistory[currentIndex];
+//     link.download = 'watch_history_lastTwo.png';
 
-    var img = new Image();
-    img.src = savehistory[currentIndex];
-    img.onload = function() {
-        contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-        contextReal.drawImage(img, 0, 0, canvasDraft.width, canvasDraft.height);
-    };
-}
+//     var img = new Image();
+//     img.src = savehistory[currentIndex];
+//     img.onload = function() {
+//         contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+//         contextReal.drawImage(img, 0, 0, canvasDraft.width, canvasDraft.height);
+//     };
+// }
 
 class PaintFunction {
     constructor() {}
