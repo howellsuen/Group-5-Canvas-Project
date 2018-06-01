@@ -3,15 +3,11 @@
 
 <head>
     <title>Canvas App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
     <!-- bootstrap and font-awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!-- customized css -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -19,8 +15,7 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Canvas</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
@@ -55,7 +50,7 @@
         <span class="btn btn-info" id="paint-bucket">
             <i class="fa fa-paint-brush"></i>
         </span>
-        
+
         <span class="btn btn-success" id="add-text">
                 <i class="fas fa-font"></i>
         </span>
@@ -64,45 +59,50 @@
                 <input type="file"  id="upload" name="imageLoader" style="display: none">
                 <i class="fas fa-image"></i>
         </label>
-
-        <span class="btn btn-info fa fa-success" id="drawing-line">Drawing Line</span>
-        <span class="btn btn-info fa fa-success" type="selector" id="quadratic-curve">Quadratic Curve</span>
-        <span class="btn btn-info fa fa-success" id="bezier-curve">Bezier Curve</span>
+        <span class="btn btn-info fa fa-success" id="drawing-line">
+            <img src="assets/line.png" alt="Line" style= width:24px height:20px;>
+        </span>
+        <span class="btn btn-info fa fa-success" id="quadratic-curve">
+            <img src="assets/curve.png" alt="Quadratic" style= width:20px height:20px;>
+        </span>
+        <span class="btn btn-info fa fa-success" id="bezier-curve">
+            <img src="assets/noun_799221_cc.png" alt="Bezier" style= width:20px height:20px;>
+        </span>
         <button class="btn btn-default">
             <input type="range" name="brushsize" min="1" max="30" step="1" value="5" id="brushSlider">
         </button>
 
         <!-- fill color picker -->
-        <label for="color-input"  id="fill" class="color-label"></label>
+        <label for="color-input" id="fill" class="color-label"></label>
         <div id="color-picker-fill">
             <canvas id="color-block-fill" class="color-block" height="150" width="150"></canvas>
             <canvas id="color-strip-fill" class="color-strip" height="150" width="30"></canvas>
             <div class="rgb-field">
-                R<input class="input" id="fill-r" type="text" maxlength="3">
-                G<input class="input" id="fill-g" type="text" maxlength="3">
-                B<input class="input" id="fill-b" type="text" maxlength="3">
+                R<input class="input" id="fill-r" type="text" maxlength="3"> G
+                <input class="input" id="fill-g" type="text" maxlength="3"> B
+                <input class="input" id="fill-b" type="text" maxlength="3">
             </div>
         </div>
         <!-- stroke color picker -->
-        <label for="color-input"  id="stroke" class="color-label"></label>
+        <label for="color-input" id="stroke" class="color-label"></label>
         <div id="color-picker-stroke">
             <canvas id="color-block-stroke" class="color-block" height="150" width="150"></canvas>
             <canvas id="color-strip-stroke" class="color-strip" height="150" width="30"></canvas>
             <div class="rgb-field">
-                R<input class="input" id="stroke-r" type="text">
-                G<input class="input" id="stroke-g" type="text">
-                B<input class="input" id="stroke-b" type="text">
+                R<input class="input" id="stroke-r" type="text"> G
+                <input class="input" id="stroke-g" type="text"> B
+                <input class="input" id="stroke-b" type="text">
             </div>
         </div>
         <!-- background color picker -->
-        <label for="color-input"  id="bg" class="color-label"></label>
+        <label for="color-input" id="bg" class="color-label"></label>
         <div id="color-picker-bg">
             <canvas id="color-block-bg" class="color-block" height="150" width="150"></canvas>
             <canvas id="color-strip-bg" class="color-strip" height="150" width="30"></canvas>
             <div class="rgb-field">
-                R<input class="input" id="bg-r" type="text">
-                G<input class="input" id="bg-g" type="text">
-                B<input class="input" id="bg-b" type="text">
+                R<input class="input" id="bg-r" type="text"> G
+                <input class="input" id="bg-g" type="text"> B
+                <input class="input" id="bg-b" type="text">
             </div>
         </div>
 
@@ -125,16 +125,14 @@
 
     <!-- required js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script src="canvas-common.js"></script>
     <script src="pencil.js"></script>
     <script src="drawing-line.js"></script>
-    <script src="quadratic-line.js"></script>
-    <script src="bezier-line.js"></script>
+    <script src="quadratic-curve.js"></script>
+    <script src="bezier-curve.js"></script>
     <script src="draw-rectangle.js"></script>
     <script src="draw-circle.js"></script>
     <script src="color-picker-fill.js"></script>
@@ -153,9 +151,9 @@
 
         function handleImage(e) {
             var reader = new FileReader();
-            reader.onload = function (event) {
+            reader.onload = function(event) {
                 var img = new Image();
-                img.onload = function () {
+                img.onload = function() {
                     canvas.width = img.width;
                     canvas.height = img.height;
                     ctx.drawImage(img, 0, 0);
@@ -200,17 +198,17 @@
             contextDraft.clearRect(0, 0, canvasReal.width, canvasReal.height);
             savehistory = [];
         });
-        $('#download').click(function () {
+        $('#download').click(function() {
             currentFunction = new Download(contextReal);
             currentFunction.downloadCanvas(this, 'canvas-real', 'test.png');
             console.log(this);
         });
-        $('#undo').click(function () {
+        $('#undo').click(function() {
             currentFunction = new DrawHistory(contextReal);
             currentFunction.undo();
             // undo(this, 'canvas-real');
         });
-        $('#redo').click(function () {
+        $('#redo').click(function() {
             currentFunction = new DrawHistory(contextReal);
             currentFunction.redo();
             // redo(this, 'canvas-real');
@@ -218,7 +216,7 @@
         $('#paint-bucket').click(() => {
             currentFunction = new PaintBucket(contextReal, contextDraft);
         });
-        
+
         currentFunction = new DrawingPencil(contextReal, contextDraft);
     </script>
 </body>
