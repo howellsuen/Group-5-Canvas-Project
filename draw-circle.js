@@ -34,7 +34,39 @@ class DrawingCircle extends PaintFunction{
     onMouseEnter(){}
 }
 
+// outline
+class DrawingCircleOutline extends PaintFunction{
+    constructor(contextReal,contextDraft){
+        super();
+        this.contextReal = contextReal;
+        this.contextDraft = contextDraft;            
+    }
+    
+    onMouseDown(coord,event){
+        this.contextReal.strokeStyle = rgbaColor;
+        this.origX = coord[0];
+        this.origY = coord[1];
+    }
+    onDragging(coord,event){
+        this.contextDraft.strokeStyle = rgbaColor;
+        this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
+        this.contextDraft.beginPath();
+        this.contextDraft.arc(this.origX, this.origY, Math.abs(coord[0]- this.origX), 0, 2 * Math.PI, false);
+        this.contextDraft.closePath();
+        this.contextDraft.stroke();
+    }
 
+    onMouseMove(){}
+    onMouseUp(coord){
+        this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
+        this.contextReal.beginPath();
+        this.contextReal.arc(this.origX, this.origY, Math.abs(coord[0]- this.origX), 0, 2 * Math.PI, false);
+        this.contextReal.closePath();
+        this.contextReal.stroke();
+    }
+    onMouseLeave(){}
+    onMouseEnter(){}
+}
 
  // draw circles: ctx.arc(x, y, radius, startAngle, endAngle [, anticlockwise]);
         // Pythagorean Theorem: a**2 + b**2 = c**2
