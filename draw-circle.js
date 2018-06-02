@@ -13,12 +13,14 @@ class DrawingCircle extends PaintFunction{
     }
     onDragging(coord,event){
         this.contextDraft.fillStyle = rgbaColor;
+        this.contextDraft.strokeStyle = rgbaColorStroke;
+        this.contextDraft.lineWidth = brushSize;
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextDraft.beginPath();
         this.contextDraft.arc(this.origX, this.origY, Math.abs(coord[0]- this.origX), 0, 2 * Math.PI, false);
         this.contextDraft.closePath();
-        contextDraft.fill();
-        //this.contextReal.stroke(); 
+        this.contextDraft.fill();
+        this.contextDraft.stroke(); 
     }
 
     onMouseMove(){}
@@ -26,9 +28,11 @@ class DrawingCircle extends PaintFunction{
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextReal.arc(this.origX, this.origY, Math.abs(coord[0]- this.origX), 0, 2 * Math.PI, false);
         this.contextReal.fillStyle = rgbaColor;
+        this.contextReal.strokeStyle = rgbaColorStroke;
+        this.contextReal.lineWidth = brushSize;
         this.contextReal.closePath();
         this.contextReal.fill();
-        
+        this.contextReal.stroke();
     }
     onMouseLeave(){}
     onMouseEnter(){}
@@ -49,6 +53,7 @@ class DrawingCircleOutline extends PaintFunction{
     }
     onDragging(coord,event){
         this.contextDraft.strokeStyle = rgbaColorStroke;
+        this.contextDraft.lineWidth = brushSize;
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextDraft.beginPath();
         this.contextDraft.arc(this.origX, this.origY, Math.abs(coord[0]- this.origX), 0, 2 * Math.PI, false);
@@ -60,6 +65,7 @@ class DrawingCircleOutline extends PaintFunction{
     onMouseUp(coord){
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextReal.beginPath();
+        this.contextReal.lineWidth = brushSize;
         this.contextReal.arc(this.origX, this.origY, Math.abs(coord[0]- this.origX), 0, 2 * Math.PI, false);
         this.contextReal.closePath();
         this.contextReal.stroke();
