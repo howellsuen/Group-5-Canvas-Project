@@ -5,7 +5,7 @@ class Eraser extends PaintFunction{
     }
     
     onMouseDown(coord,event){
-        this.context.strokeStyle = "white";
+        this.context.strokeStyle = rgbaColorBg;
         this.context.lineJoin = "round";
         this.context.lineCap = "round";
         this.context.lineWidth = 10;

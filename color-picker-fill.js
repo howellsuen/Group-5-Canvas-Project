@@ -1,41 +1,39 @@
-var colorBlock = document.getElementById('color-block-fill');
-var ctx1 = colorBlock.getContext('2d');
-var width1 = colorBlock.width;
-var height1 = colorBlock.height;
+let colorBlockFill = document.getElementById('color-block-fill');
+let ctx1 = colorBlockFill.getContext('2d');
+let width1 = colorBlockFill.width;
+let height1 = colorBlockFill.height;
 
-var colorStrip = document.getElementById('color-strip-fill');
-var ctx2 = colorStrip.getContext('2d');
-var width2 = colorStrip.width;
-var height2 = colorStrip.height;
+let colorStripFill = document.getElementById('color-strip-fill');
+let ctx2 = colorStripFill.getContext('2d');
+let width2 = colorStripFill.width;
+let height2 = colorStripFill.height;
 
-
-var tool = document.getElementsByClassName('tool-panel');
-var colorLabel = document.getElementById('fill');
-var colorPicker = document.getElementById('color-picker-fill');
-var rgbField = document.getElementsByClassName('rgb-field');
-var rgbInput = document.getElementsByClassName('input');
-var R = document.getElementById('fill-r');
-var G = document.getElementById('fill-g');
-var B = document.getElementById('fill-b');
+let tool = document.getElementsByClassName('tool-panel');
+let fillLabel = document.getElementById('fill');
+let colorPickerFill = document.getElementById('color-picker-fill');
+let rgbField = document.getElementsByClassName('rgb-field');
+let rgbInput = document.getElementsByClassName('input');
+let R = document.getElementById('fill-r');
+let G = document.getElementById('fill-g');
+let B = document.getElementById('fill-b');
 
 //show and hide color
-window.onclick = function(e) {
-  
-  if (e.target == colorLabel) {
-    colorPicker.style.display = "block";
-  } 
-  if (e.target == canvasReal || e.target == canvasDraft || e.target == tool[0]) {
-    colorPicker.style.display = "none";
+function show(e) {
+  if (e.target == fillLabel) {
+    colorPickerFill.style.display = "block";
+  } else if (e.target == canvasReal || e.target == canvasDraft || e.target == tool[0]) {
+    colorPickerFill.style.display = "none";
   }
 }
+document.addEventListener("click", show, false);
 
-var x = 0;
-var y = 0;
-var drag = false;
+let x = 0;
+let y = 0;
+let drag = false;
 
-var rgbaColor = 'rgba(255, 0, 0, 1)';
-var matchColors = /rgba\((\d{1,3}), (\d{1,3}), (\d{1,3}), (\d{1,3})\)/;
-var match = rgbaColor.match(matchColors);
+let rgbaColor = 'rgba(255, 0, 0, 1)';
+let matchColors = /rgba\((\d{1,3}), (\d{1,3}), (\d{1,3}), (\d{1,3})\)/;
+let match = rgbaColor.match(matchColors);
 R.value = match[1];
 G.value = match[2];
 B.value = match[3];
@@ -44,7 +42,7 @@ ctx1.rect(0, 0, width1, height1);
 fillGradient();
 
 ctx2.rect(0, 0, width2, height2);
-var grd1 = ctx2.createLinearGradient(0, 0, 0, height1);
+let grd1 = ctx2.createLinearGradient(0, 0, 0, height1);
 grd1.addColorStop(0, 'rgba(255, 0, 0, 1)');
 grd1.addColorStop(0.17, 'rgba(255, 255, 0, 1)');
 grd1.addColorStop(0.34, 'rgba(0, 255, 0, 1)');
@@ -58,7 +56,7 @@ ctx2.fill();
 function click(e) {
   x = e.offsetX;
   y = e.offsetY;
-  var imageData = ctx2.getImageData(x, y, 1, 1).data;
+  let imageData = ctx2.getImageData(x, y, 1, 1).data;
   rgbaColor = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
   fillGradient();
 }
@@ -67,13 +65,13 @@ function fillGradient() {
   ctx1.fillStyle = rgbaColor;
   ctx1.fillRect(0, 0, width1, height1);
 
-  var grdWhite = ctx2.createLinearGradient(0, 0, width1, 0);
+  let grdWhite = ctx2.createLinearGradient(0, 0, width1, 0);
   grdWhite.addColorStop(0, 'rgba(255,255,255,1)');
   grdWhite.addColorStop(1, 'rgba(255,255,255,0)');
   ctx1.fillStyle = grdWhite;
   ctx1.fillRect(0, 0, width1, height1);
 
-  var grdBlack = ctx2.createLinearGradient(0, 0, 0, height1);
+  let grdBlack = ctx2.createLinearGradient(0, 0, 0, height1);
   grdBlack.addColorStop(0, 'rgba(0,0,0,0)');
   grdBlack.addColorStop(1, 'rgba(0,0,0,1)');
   ctx1.fillStyle = grdBlack;
@@ -98,30 +96,33 @@ function mouseup(e) {
 function changeColor(e) {
   x = e.offsetX;
   y = e.offsetY;
-  var imageData = ctx1.getImageData(x, y, 1, 1).data;
+  let imageData = ctx1.getImageData(x, y, 1, 1).data;
   rgbaColor = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
-  colorLabel.style.backgroundColor = rgbaColor;
+  fillLabel.style.backgroundColor = rgbaColor;
   R.value = imageData[0];
   G.value = imageData[1];
   B.value = imageData[2];
 }
 
-colorStrip.addEventListener("click", click, false);
+colorStripFill.addEventListener("click", click, false);
 
-colorBlock.addEventListener("mousedown", mousedown, false);
-colorBlock.addEventListener("mouseup", mouseup, false);
-colorBlock.addEventListener("mousemove", mousemove, false);
+colorBlockFill.addEventListener("mousedown", mousedown, false);
+colorBlockFill.addEventListener("mouseup", mouseup, false);
+colorBlockFill.addEventListener("mousemove", mousemove, false);
 
 
 // input rgb by text
-function typeColor() {
-  R.value = R.value;
-  G.value = G.value;
-  B.value = B.value;
-
-  rgbaColor = 'rgba(' + R.value + ',' + G.value + ',' + B.value + ',1)';
-  colorLabel.style.backgroundColor = rgbaColor;
+function typeColor(e) {
+  if (isNaN(this.value) || this.value >255 || this.value <0) {
+    this.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
+  } else {
+    rgbaColor = 'rgba(' + R.value + ',' + G.value + ',' + B.value + ',1)';
+    fillLabel.style.backgroundColor = rgbaColor;
+    fillGradient();
+    this.style.backgroundColor = "";
+  }
 }
 
-R.addEventListener("keyup", mousedown, false);
-
+R.addEventListener("input", typeColor, false);
+G.addEventListener("input", typeColor, false);
+B.addEventListener("input", typeColor, false);

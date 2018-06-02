@@ -5,7 +5,7 @@ class DrawingPencil extends PaintFunction {
     }
 
     onMouseDown(coord, event) {
-        this.context.strokeStyle = rgbaColor;
+        this.context.strokeStyle = rgbaColorStroke;
         this.context.lineJoin = "round";
         this.context.lineCap = "round";
         this.context.lineWidth = brushSize;

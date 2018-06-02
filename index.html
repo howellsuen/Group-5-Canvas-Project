@@ -44,20 +44,19 @@
             <i class="far fa-circle"></i>
         </span>
         <span class="btn btn-primary" id="drawing-pencil">
-            <i class="fa-pencil-alt"></i>
+            <i class="fa fa-pencil-alt"></i>
         </span>
-
         <span class="btn btn-info" id="paint-bucket">
-            <i class="fa fa-paint-brush"></i>
+            <img src="assets/bucket.png" alt="Bucket" style= width:20px height:20px;>
         </span>
 
         <span class="btn btn-success" id="add-text">
-                <i class="fas fa-font"></i>
+            <i class="fas fa-font"></i>
         </span>
 
         <label class="btn btn-success">
-                <input type="file"  id="upload" name="imageLoader" style="display: none">
-                <i class="fas fa-image"></i>
+            <input type="file"  id="upload" name="imageLoader" style="display: none">
+            <i class="fas fa-image"></i>
         </label>
         <span class="btn btn-info fa fa-success" id="drawing-line">
             <img src="assets/line.png" alt="Line" style= width:24px height:20px;>
@@ -73,36 +72,36 @@
         </button>
 
         <!-- fill color picker -->
-        <label for="color-input" id="fill" class="color-label"></label>
-        <div id="color-picker-fill">
+        <div id="fill" class="color-label"></div>
+        <div id="color-picker-fill" class="color-picker">
             <canvas id="color-block-fill" class="color-block" height="150" width="150"></canvas>
             <canvas id="color-strip-fill" class="color-strip" height="150" width="30"></canvas>
             <div class="rgb-field">
-                R<input class="input" id="fill-r" type="text" maxlength="3"> G
-                <input class="input" id="fill-g" type="text" maxlength="3"> B
-                <input class="input" id="fill-b" type="text" maxlength="3">
+                R<input class="input" id="fill-r" type="text" maxlength="3">
+                G<input class="input" id="fill-g" type="text" maxlength="3">
+                B<input class="input" id="fill-b" type="text" maxlength="3">
             </div>
         </div>
         <!-- stroke color picker -->
-        <label for="color-input" id="stroke" class="color-label"></label>
-        <div id="color-picker-stroke">
+        <div id="stroke" class="color-label"></div>
+        <div id="color-picker-stroke" class="color-picker">
             <canvas id="color-block-stroke" class="color-block" height="150" width="150"></canvas>
             <canvas id="color-strip-stroke" class="color-strip" height="150" width="30"></canvas>
             <div class="rgb-field">
-                R<input class="input" id="stroke-r" type="text"> G
-                <input class="input" id="stroke-g" type="text"> B
-                <input class="input" id="stroke-b" type="text">
+                R<input class="input" id="stroke-r" type="text">
+                G<input class="input" id="stroke-g" type="text"> 
+                B<input class="input" id="stroke-b" type="text">
             </div>
         </div>
         <!-- background color picker -->
-        <label for="color-input" id="bg" class="color-label"></label>
-        <div id="color-picker-bg">
+        <div id="bg" class="color-label"></div>
+        <div id="color-picker-bg" class="color-picker">
             <canvas id="color-block-bg" class="color-block" height="150" width="150"></canvas>
             <canvas id="color-strip-bg" class="color-strip" height="150" width="30"></canvas>
             <div class="rgb-field">
-                R<input class="input" id="bg-r" type="text"> G
-                <input class="input" id="bg-g" type="text"> B
-                <input class="input" id="bg-b" type="text">
+                R<input class="input" id="bg-r" type="text">
+                G<input class="input" id="bg-g" type="text">
+                B<input class="input" id="bg-b" type="text">
             </div>
         </div>
 
@@ -136,8 +135,8 @@
     <script src="draw-rectangle.js"></script>
     <script src="draw-circle.js"></script>
     <script src="color-picker-fill.js"></script>
-    <!-- <script src="color-picker-stroke.js"></script> -->
-    <!-- <script src="color-picker-bg.js"></script> -->
+    <script src="color-picker-stroke.js"></script>
+    <script src="color-picker-bg.js"></script>
     <script src="eraser.js"></script>
     <script src="download.js"></script>
     <script src="draw-history.js"></script>

@@ -27,7 +27,7 @@ class BezierCurve extends PaintFunction {
         this.style = {
             curve: {
                 width: brushSize,
-                color: rgbaColor
+                color: rgbaColorStroke
             },
             cpline: {
                 width: 1,

@@ -21,7 +21,7 @@ class DrawingLine extends PaintFunction {
 
     draw(context, coord) {
         contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-        context.strokeStyle = rgbaColor;
+        context.strokeStyle = rgbaColorStroke;
         context.lineJoin = "round";
         context.lineWidth = brushSize;
         context.beginPath();

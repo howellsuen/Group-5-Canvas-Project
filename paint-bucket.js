@@ -66,7 +66,6 @@ class PaintBucket extends PaintFunction {
         }
         if (loop < maxLoop) {
             this.contextReal.putImageData(colorLayer, 0, 0);
-            this.storeUndo();
         }
 
         function matchStartColor(pixelPos) {

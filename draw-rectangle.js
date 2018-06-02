@@ -36,12 +36,12 @@ class DrawingRectangleOutline extends PaintFunction{
     }
     
     onMouseDown(coord,event){
-        this.contextReal.strokeStyle = rgbaColor;
+        this.contextReal.strokeStyle = rgbaColorStroke;
         this.origX = coord[0];
         this.origY = coord[1];
     }
     onDragging(coord,event){
-        this.contextDraft.strokeStyle = rgbaColor;
+        this.contextDraft.strokeStyle = rgbaColorStroke;
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         // ctx.fillRect(x, y, width, height);
         this.contextDraft.strokeRect(this.origX, this.origY, coord[0]- this.origX, coord[1] - this.origY)

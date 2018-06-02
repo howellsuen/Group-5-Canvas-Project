@@ -46,14 +46,24 @@ color picker
     width: 45px;
 } 
  
-#color-picker-fill,
-#color-picker-stroke,
-#color-picker-bg  {
-    position: absolute;
-    top: 270px;
-    left: 65px; 
+#fill {
+    background-color: red;
+}
+
+#stroke {
+    background-color: red;
+    border: black 3px solid;
+    
+}
+
+#bg {
     background-color: white;
-    height: 200px;
+}
+
+.color-picker {
+    position: absolute; 
+    background-color: white;
+    height: 190px;
     width: 198px;
     border: solid 1px #ccc;
     padding: 5px;
@@ -61,20 +71,22 @@ color picker
     display: none;
 }
 
-#fill {
-    background-color: red;
+#color-picker-fill {
+    top: 340px;
+    left: 65px; 
+}
+#color-picker-stroke {
+    top: 380px;
+    left: 65px; 
 }
 
-#stroke {
-    background-color: black;
-    border: black 2px solid;
-}
-#bg {
-    background-color: white;
+#color-picker-bg {
+    top: 580px;
+    left: 65px; 
 }
 
 .rgb-field {
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .rgb-field input {
