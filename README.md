@@ -1,5 +1,43 @@
-# Group-5-Canvas-Project
-One Paragraph of project description goes here
+# Group 5 - Online Paint
+Online Paint app built with HTML5 canvas for graphics drawing.
+Currently supports usage on desktop browser.
 
-## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Canvas Features
+
+* Rectangle
+* Circle
+* Paint bucket
+* Pencil
+* Straight line
+* Quadratic curve
+* Bezier Curve
+* Line width control
+* Color picker
+* Eraser
+* Undo/ Redo
+* Reset
+* Upload image
+* Save image
+
+## Deployment
+
+Project can also be found at [Surge.sh](http://name.surge.sh/)
+
+## Built With
+
+* HTML
+* CSS 
+* BootStrap
+* JavaScript
+* jQuery
+
+## Authors
+
+* [**Howell Suen**](https://github.com/howellsuen)
+* [**Peter Wong**](https://github.com/siuhangw)
+* [**Michelle Lau**](https://github.com/michellelky)
+
+## Acknowledgments
+
+* [Create a Paint Bucket Tool with HTML5 Canvas { William Malone }](http://www.williammalone.com/articles/html5-canvas-javascript-paint-bucket-tool/)
+
