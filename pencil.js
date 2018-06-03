@@ -18,7 +18,9 @@ class DrawingPencil extends PaintFunction {
     }
 
     onMouseMove() {}
-    onMouseUp() {}
+    onMouseUp() {
+        onFinish = true;
+    }
     onMouseLeave() {}
     onMouseEnter() {}
     onDblClick() {}

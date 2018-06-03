@@ -143,24 +143,25 @@
     <script src="paint-bucket.js"></script>
 
     <script type='text/javascript'>
-        var imageLoader = document.getElementById('upload'); // Get Upload Button
-        imageLoader.addEventListener('change', handleImage, false); // Get Upload Button Change
-        var canvas = document.getElementById('canvas-real'); // Get Canvas Real
-        var ctx = canvas.getContext('2d'); // Get Context Real
-
         initCanvas();
+
+        var imageLoader = document.getElementById('upload');
+        imageLoader.addEventListener('change', handleImage, false);
 
         function handleImage(e) {
             var reader = new FileReader();
             reader.onload = function(event) {
                 var img = new Image();
                 img.onload = function() {
-                    ctx.drawImage(img, canvas.width * 0.5 - img.width * 0.5, canvas.height * 0.5 - img.height * 0.5);
+                    contextReal.drawImage(img, canvasReal.width * 0.5 - img.width * 0.5, canvasReal.height * 0.5 - img.height * 0.5);
+                    var snap = document.getElementById('canvas-real').toDataURL();
+                    savehistory.push(snap);
+                    currentIndex = savehistory.length - 1;
+                    console.log('snap');
                 }
                 img.src = event.target.result;
             }
             reader.readAsDataURL(e.target.files[0]);
-            console.log('e: ' + e);
         }
 
         $('#drawing-rectangle').click(() => {

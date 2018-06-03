@@ -18,7 +18,9 @@ class Eraser extends PaintFunction{
     }
 
     onMouseMove(){}
-    onMouseUp(){}
+    onMouseUp(){
+        onFinish = true;
+    }
     onMouseLeave(){}
     onMouseEnter(){}
 

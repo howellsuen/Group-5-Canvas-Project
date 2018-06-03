@@ -33,6 +33,7 @@ class DrawingCircle extends PaintFunction{
         this.contextReal.closePath();
         this.contextReal.fill();
         this.contextReal.stroke();
+        onFinish = true;
     }
     onMouseLeave(){}
     onMouseEnter(){}
@@ -69,6 +70,7 @@ class DrawingCircleOutline extends PaintFunction{
         this.contextReal.arc(this.origX, this.origY, Math.abs(coord[0]- this.origX), 0, 2 * Math.PI, false);
         this.contextReal.closePath();
         this.contextReal.stroke();
+        onFinish = true;
     }
     onMouseLeave(){}
     onMouseEnter(){}

@@ -95,6 +95,7 @@ class QuadraticCurve extends PaintFunction {
         contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         this.drawReal();
         this.firstClick = true;
+        onFinish = true;
     }
 
     drawReal() {

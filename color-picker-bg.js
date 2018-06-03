@@ -101,6 +101,7 @@ function changeColorBg(e) {
   Bbg.value = imageData[2];
   contextReal.fillStyle = rgbaColorBg;
   contextReal.fillRect(0,0,canvasDraft.width,canvasDraft.height);
+  onFinish = true;
 }
 
 colorStripBg.addEventListener("click", click, false);
