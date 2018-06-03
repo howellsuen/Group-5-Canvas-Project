@@ -33,85 +33,85 @@
     </nav>
     <!-- left panel buttons-->
     <div class="tool-panel">
-        <span class="btn btn-primary" id="drawing-rectangle">
+        <span class="btn btn-primary" id="drawing-rectangle" data-toggle="tooltip" data-placement="right" title="Rectangle">
             <i class="fas fa-square"></i>
         </span>
-        <span class="btn btn-primary" id="drawing-rectangle-outline">
+        <span class="btn btn-primary" id="drawing-rectangle-outline" data-toggle="tooltip" data-placement="right" title="Rectangle Outline">
             <i class="far fa-square"></i>
         </span>
-        <span class="btn btn-primary" id="drawing-circle">
+        <span class="btn btn-primary" id="drawing-circle" data-toggle="tooltip" data-placement="right" title="Circle">
             <i class="fas fa-circle"></i>
         </span>
-        <span class="btn btn-primary" id="drawing-circle-outline">
+        <span class="btn btn-primary" id="drawing-circle-outline" data-toggle="tooltip" data-placement="right" title="Circle Outline">
             <i class="far fa-circle"></i>
         </span>
-        <span class="btn btn-primary" id="paint-bucket">
+        <span class="btn btn-primary" id="paint-bucket" data-toggle="tooltip" data-placement="right" title="Paint Bucket">
             <img src="assets/bucket.png" alt="Bucket" style= width:20px height:20px;>
         </span>
-        <label class="btn btn-primary">
+        <label class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add Image">
             <input type="file"  id="upload" name="imageLoader" style="display: none">
             <i class="fas fa-image"></i>
         </label>
-        <span class="btn btn-info" id="drawing-pencil">
+        <span class="btn btn-info" id="drawing-pencil" data-toggle="tooltip" data-placement="right" title="Pencil">
             <i class="fa fa-pencil-alt"></i>
         </span>
-        <span class="btn btn-info fa fa-success" id="drawing-line">
+        <span class="btn btn-info fa fa-success" id="drawing-line" data-toggle="tooltip" data-placement="right" title="Line">
             <img src="assets/line.png" alt="Line" style= width:24px height:20px;>
         </span>
-        <span class="btn btn-info fa fa-success" id="quadratic-curve">
+        <span class="btn btn-info fa fa-success" id="quadratic-curve" data-toggle="tooltip" data-placement="right" title="Quadratic Curve">
             <img src="assets/quadratic.png" alt="Quadratic" style= width:20px height:20px;>
         </span>
-        <span class="btn btn-info fa fa-success" id="bezier-curve">
+        <span class="btn btn-info fa fa-success" id="bezier-curve" data-toggle="tooltip" data-placement="right" title="Bezier Curve">
             <img src="assets/bezier.png" alt="Bezier" style= width:20px height:20px;>
         </span>
-        
-        <div class="btn btn-default slider-wrapper">
+
+        <div class="btn btn-default slider-wrapper" data-toggle="tooltip" data-placement="right" title="Brush Size">
             <input type="range" name="brushsize" min="1" max="30" step="1" value="5" id="brushSlider">
             <div id="canvas-brush">
                 <canvas id="show-brush" height="40" width="40"></canvas>
             </div>
         </div>
         <!-- stroke color picker -->
-        <div id="stroke" class="color-label"></div>
+        <div id="stroke" class="color-label" data-toggle="tooltip" data-placement="right" title="Stroke Color Picker"></div>
         <div id="color-picker-stroke" class="color-picker">
             <canvas id="color-block-stroke" class="color-block" height="150" width="150"></canvas>
             <canvas id="color-strip-stroke" class="color-strip" height="150" width="30"></canvas>
             <div class="rgb-field">
-                R<input class="input" id="stroke-r" type="text">
-                G<input class="input" id="stroke-g" type="text"> 
-                B<input class="input" id="stroke-b" type="text">
+                R<input class="input" id="stroke-r" type="text"> G
+                <input class="input" id="stroke-g" type="text"> B
+                <input class="input" id="stroke-b" type="text">
             </div>
         </div>
         <!-- fill color picker -->
-        <div id="fill" class="color-label"></div>
+        <div id="fill" class="color-label" data-toggle="tooltip" data-placement="right" title="Fill Color Picker"></div>
         <div id="color-picker-fill" class="color-picker">
             <canvas id="color-block-fill" class="color-block" height="150" width="150"></canvas>
             <canvas id="color-strip-fill" class="color-strip" height="150" width="30"></canvas>
             <div class="rgb-field">
-                R<input class="input" id="fill-r" type="text" maxlength="3">
-                G<input class="input" id="fill-g" type="text" maxlength="3">
-                B<input class="input" id="fill-b" type="text" maxlength="3">
+                R<input class="input" id="fill-r" type="text" maxlength="3"> G
+                <input class="input" id="fill-g" type="text" maxlength="3"> B
+                <input class="input" id="fill-b" type="text" maxlength="3">
             </div>
         </div>
         <!-- background color picker -->
-        <div id="bg" class="color-label"></div>
+        <div id="bg" class="color-label" data-toggle="tooltip" data-placement="right" title="Background Color Picker"></div>
         <div id="color-picker-bg" class="color-picker">
             <canvas id="color-block-bg" class="color-block" height="150" width="150"></canvas>
             <canvas id="color-strip-bg" class="color-strip" height="150" width="30"></canvas>
             <div class="rgb-field">
-                R<input class="input" id="bg-r" type="text">
-                G<input class="input" id="bg-g" type="text">
-                B<input class="input" id="bg-b" type="text">
+                R<input class="input" id="bg-r" type="text"> G
+                <input class="input" id="bg-g" type="text"> B
+                <input class="input" id="bg-b" type="text">
             </div>
         </div>
         <!-- canvas control functions -->
-        <span class="btn btn-danger" id="eraser">
+        <span class="btn btn-danger" id="eraser" data-toggle="tooltip" data-placement="right" title="Eraser">
             <i class="fas fa-eraser"></i>
         </span>
-        <span class="btn btn-warning" id="undo">
+        <span class="btn btn-warning" id="undo" data-toggle="tooltip" data-placement="right" title="Undo">
             <i class="fas fa-undo"></i>
         </span>
-        <span class="btn btn-warning" id="redo">
+        <span class="btn btn-warning" id="redo" data-toggle="tooltip" data-placement="right" title="Redo">
             <i class="fas fa-redo"></i>
         </span>
     </div>
@@ -145,7 +145,8 @@
     <script src="scripts/eraser.js"></script>
     <script src="scripts/draw-rectangle.js"></script>
     <script src="scripts/draw-circle.js"></script>
-    
+
     <script src="scripts/common.js"></script>
 </body>
+
 </html>

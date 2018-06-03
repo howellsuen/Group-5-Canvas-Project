@@ -16,11 +16,11 @@ let Bstroke = document.getElementById('stroke-b');
 
 //show and hide color
 function show(e) {
-  if (e.target == strokeLabel) {
-    colorPickerStroke.style.display = "block";
-  } else if (e.target == canvasReal || e.target == canvasDraft || e.target == tool[0]) {
-    colorPickerStroke.style.display = "none";
-  }
+    if (e.target == strokeLabel) {
+        colorPickerStroke.style.display = "block";
+    } else if (e.target == canvasReal || e.target == canvasDraft || e.target == tool[0]) {
+        colorPickerStroke.style.display = "none";
+    }
 }
 document.addEventListener("click", show, false);
 
@@ -51,54 +51,54 @@ ctx2stroke.fillStyle = grdstroke;
 ctx2stroke.fill();
 
 function click(e) {
-  xs = e.offsetX;
-  ys = e.offsetY;
-  let imageData = ctx2stroke.getImageData(xs, ys, 1, 1).data;
-  rgbaColorStroke = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
-  fillGradientStroke();
+    xs = e.offsetX;
+    ys = e.offsetY;
+    let imageData = ctx2stroke.getImageData(xs, ys, 1, 1).data;
+    rgbaColorStroke = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
+    fillGradientStroke();
 }
 
 function fillGradientStroke() {
-  ctx1stroke.fillStyle = rgbaColorStroke;
-  ctx1stroke.fillRect(0, 0, width1stroke, height1stroke);
+    ctx1stroke.fillStyle = rgbaColorStroke;
+    ctx1stroke.fillRect(0, 0, width1stroke, height1stroke);
 
-  let grdstrokeWhite = ctx2stroke.createLinearGradient(0, 0, width1stroke, 0);
-  grdstrokeWhite.addColorStop(0, 'rgba(255,255,255,1)');
-  grdstrokeWhite.addColorStop(1, 'rgba(255,255,255,0)');
-  ctx1stroke.fillStyle = grdstrokeWhite;
-  ctx1stroke.fillRect(0, 0, width1stroke, height1stroke);
+    let grdstrokeWhite = ctx2stroke.createLinearGradient(0, 0, width1stroke, 0);
+    grdstrokeWhite.addColorStop(0, 'rgba(255,255,255,1)');
+    grdstrokeWhite.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx1stroke.fillStyle = grdstrokeWhite;
+    ctx1stroke.fillRect(0, 0, width1stroke, height1stroke);
 
-  let grdstrokeBlack = ctx2stroke.createLinearGradient(0, 0, 0, height1stroke);
-  grdstrokeBlack.addColorStop(0, 'rgba(0,0,0,0)');
-  grdstrokeBlack.addColorStop(1, 'rgba(0,0,0,1)');
-  ctx1stroke.fillStyle = grdstrokeBlack;
-  ctx1stroke.fillRect(0, 0, width1stroke, height1stroke);
+    let grdstrokeBlack = ctx2stroke.createLinearGradient(0, 0, 0, height1stroke);
+    grdstrokeBlack.addColorStop(0, 'rgba(0,0,0,0)');
+    grdstrokeBlack.addColorStop(1, 'rgba(0,0,0,1)');
+    ctx1stroke.fillStyle = grdstrokeBlack;
+    ctx1stroke.fillRect(0, 0, width1stroke, height1stroke);
 }
 
 function mousedown(e) {
-  drags = true;
-  changeColorStroke(e);
+    drags = true;
+    changeColorStroke(e);
 }
 
 function mousemove(e) {
-  if (drags) {
-    changeColorStroke(e);
-  }
+    if (drags) {
+        changeColorStroke(e);
+    }
 }
 
 function mouseup(e) {
-  drags = false;
+    drags = false;
 }
 
 function changeColorStroke(e) {
-  xs = e.offsetX;
-  ys = e.offsetY;
-  let imageData = ctx1stroke.getImageData(xs, ys, 1, 1).data;
-  rgbaColorStroke = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
-  strokeLabel.style.backgroundColor = rgbaColorStroke;
-  Rstroke.value = imageData[0];
-  Gstroke.value = imageData[1];
-  Bstroke.value = imageData[2];
+    xs = e.offsetX;
+    ys = e.offsetY;
+    let imageData = ctx1stroke.getImageData(xs, ys, 1, 1).data;
+    rgbaColorStroke = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
+    strokeLabel.style.backgroundColor = rgbaColorStroke;
+    Rstroke.value = imageData[0];
+    Gstroke.value = imageData[1];
+    Bstroke.value = imageData[2];
 }
 
 colorStripStroke.addEventListener("click", click, false);
@@ -110,14 +110,14 @@ colorBlockStroke.addEventListener("mousemove", mousemove, false);
 
 // input rgb by text
 function typeColor(e) {
-  if (isNaN(this.value) || this.value >255 || this.value <0) {
-    this.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
-  } else {
-    rgbaColorStroke = 'rgba(' + Rstroke.value + ',' + Gstroke.value + ',' + Bstroke.value + ',1)';
-    strokeLabel.style.backgroundColor = rgbaColorStroke; 
-    fillGradientStroke();
-    this.style.backgroundColor = "";
-  }
+    if (isNaN(this.value) || this.value > 255 || this.value < 0) {
+        this.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
+    } else {
+        rgbaColorStroke = 'rgba(' + Rstroke.value + ',' + Gstroke.value + ',' + Bstroke.value + ',1)';
+        strokeLabel.style.backgroundColor = rgbaColorStroke;
+        fillGradientStroke();
+        this.style.backgroundColor = "";
+    }
 }
 
 Rstroke.addEventListener("input", typeColor, false);

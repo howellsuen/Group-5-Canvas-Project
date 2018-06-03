@@ -52,7 +52,12 @@ $('#paint-bucket').click(() => {
 
 currentFunction = new DrawingPencil(contextReal, contextDraft);
 
+// enable tooltip
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip()
+});
+
 // prompt when reload or exit page
-$(window).bind('beforeunload', function(){
-return 'Are you sure you want to leave?';
+$(window).bind('beforeunload', function() {
+    return 'Are you sure you want to leave?';
 });

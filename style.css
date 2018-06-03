@@ -2,7 +2,8 @@
 basics
 ==================*/
 
-html, body {
+html,
+body {
     margin: 0px;
     width: 100%;
     height: 100%;
@@ -13,6 +14,7 @@ html, body {
 a:hover {
     cursor: pointer;
 }
+
 
 /* ==================
 header
@@ -55,6 +57,7 @@ label {
     transform: rotate(90deg);
 }
 
+
 /* ==================
 color picker
 ==================*/
@@ -63,8 +66,8 @@ color picker
     margin: 5px;
     height: 30px;
     width: 45px;
-} 
- 
+}
+
 #fill {
     background-color: rgba(120, 220, 240, 1);
 }
@@ -72,7 +75,6 @@ color picker
 #stroke {
     background-color: rgba(15, 150, 150, 1);
     border: black 2px solid;
-    
 }
 
 #bg {
@@ -80,7 +82,7 @@ color picker
 }
 
 .color-picker {
-    position: absolute; 
+    position: absolute;
     background-color: white;
     height: 190px;
     width: 198px;
@@ -90,18 +92,19 @@ color picker
     display: none;
 }
 
-#color-picker-fill {
-    top: 340px;
-    left: 65px; 
-}
 #color-picker-stroke {
-    top: 380px;
-    left: 65px; 
+    top: 350px;
+    left: 65px;
+}
+
+#color-picker-fill {
+    top: 540px;
+    left: 65px;
 }
 
 #color-picker-bg {
     top: 580px;
-    left: 65px; 
+    left: 65px;
 }
 
 .rgb-field {
@@ -115,21 +118,20 @@ color picker
     width: 35px;
 }
 
+
 /*==================
 canvas
 ==================*/
 
 .canvas {
-    border:1px rgb(160, 160, 160) solid;
+    border: 1px rgb(160, 160, 160) solid;
     position: absolute;
     top: 40px;
     bottom: 0;
     left: 55px;
     right: 0;
-    
 }
 
 #canvas-draft {
     background-color: transparent;
 }
-
