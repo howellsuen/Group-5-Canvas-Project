@@ -1,4 +1,4 @@
-class BezierCurve extends PaintFunction {
+class QuadraticCurve extends PaintFunction {
     constructor(contextReal, contextDraft) {
         super();
         this.contextReal = contextReal;
@@ -15,11 +15,7 @@ class BezierCurve extends PaintFunction {
                 y: 250
             },
             cp1: {
-                x: 200,
-                y: 100
-            },
-            cp2: {
-                x: 300,
+                x: 250,
                 y: 100
             }
         };
@@ -81,19 +77,15 @@ class BezierCurve extends PaintFunction {
         let b = coord[1];
         this.point = {
             p1: {
-                x: a - 40,
+                x: a - 50,
                 y: b
             },
             p2: {
-                x: a + 80,
+                x: a + 50,
                 y: b
             },
             cp1: {
                 x: a,
-                y: b
-            },
-            cp2: {
-                x: a + 40,
                 y: b
             }
         };
@@ -103,6 +95,7 @@ class BezierCurve extends PaintFunction {
         contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         this.drawReal();
         this.firstClick = true;
+        onFinish = true;
     }
 
     drawReal() {
@@ -110,7 +103,7 @@ class BezierCurve extends PaintFunction {
         contextReal.strokeStyle = this.style.curve.color;
         contextReal.beginPath();
         contextReal.moveTo(this.point.p1.x, this.point.p1.y);
-        contextReal.bezierCurveTo(this.point.cp1.x, this.point.cp1.y, this.point.cp2.x, this.point.cp2.y, this.point.p2.x, this.point.p2.y);
+        contextReal.quadraticCurveTo(this.point.cp1.x, this.point.cp1.y, this.point.p2.x, this.point.p2.y);
         contextReal.stroke();
     }
 
@@ -122,7 +115,6 @@ class BezierCurve extends PaintFunction {
         ctx.beginPath();
         ctx.moveTo(this.point.p1.x, this.point.p1.y);
         ctx.lineTo(this.point.cp1.x, this.point.cp1.y);
-        ctx.moveTo(this.point.cp2.x, this.point.cp2.y);
         ctx.lineTo(this.point.p2.x, this.point.p2.y);
         ctx.stroke();
         // curve
@@ -130,7 +122,7 @@ class BezierCurve extends PaintFunction {
         ctx.strokeStyle = this.style.curve.color;
         ctx.beginPath();
         ctx.moveTo(this.point.p1.x, this.point.p1.y);
-        ctx.bezierCurveTo(this.point.cp1.x, this.point.cp1.y, this.point.cp2.x, this.point.cp2.y, this.point.p2.x, this.point.p2.y);
+        ctx.quadraticCurveTo(this.point.cp1.x, this.point.cp1.y, this.point.p2.x, this.point.p2.y);
         ctx.stroke();
         // control points
         for (var p in this.point) {

@@ -31,7 +31,7 @@ let x = 0;
 let y = 0;
 let drag = false;
 
-let rgbaColor = 'rgba(255, 0, 0, 1)';
+let rgbaColor = 'rgba(120, 220, 240, 1)';
 let matchColors = /rgba\((\d{1,3}), (\d{1,3}), (\d{1,3}), (\d{1,3})\)/;
 let match = rgbaColor.match(matchColors);
 R.value = match[1];

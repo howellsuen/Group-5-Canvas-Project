@@ -2,19 +2,21 @@
 <html>
 
 <head>
-    <title>Canvas App</title>
+    <title>canvas</title>
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
     <!-- bootstrap and font-awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans" rel="stylesheet">
     <!-- customized css -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Canvas</a>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">canvas</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,7 +31,7 @@
             </ul>
         </div>
     </nav>
-
+    <!-- left panel buttons-->
     <div class="tool-panel">
         <span class="btn btn-primary" id="drawing-rectangle">
             <i class="fas fa-square"></i>
@@ -43,21 +45,16 @@
         <span class="btn btn-primary" id="drawing-circle-outline">
             <i class="far fa-circle"></i>
         </span>
-        <span class="btn btn-primary" id="drawing-pencil">
-            <i class="fa fa-pencil-alt"></i>
-        </span>
-        <span class="btn btn-info" id="paint-bucket">
+        <span class="btn btn-primary" id="paint-bucket">
             <img src="assets/bucket.png" alt="Bucket" style= width:20px height:20px;>
         </span>
-
-        <span class="btn btn-success" id="add-text">
-            <i class="fas fa-font"></i>
-        </span>
-
-        <label class="btn btn-success">
+        <label class="btn btn-primary">
             <input type="file"  id="upload" name="imageLoader" style="display: none">
             <i class="fas fa-image"></i>
         </label>
+        <span class="btn btn-info" id="drawing-pencil">
+            <i class="fa fa-pencil-alt"></i>
+        </span>
         <span class="btn btn-info fa fa-success" id="drawing-line">
             <img src="assets/line.png" alt="Line" style= width:24px height:20px;>
         </span>
@@ -67,19 +64,11 @@
         <span class="btn btn-info fa fa-success" id="bezier-curve">
             <img src="assets/bezier.png" alt="Bezier" style= width:20px height:20px;>
         </span>
-        <button class="btn btn-default">
+        
+        <div class="btn btn-default slider-wrapper">
             <input type="range" name="brushsize" min="1" max="30" step="1" value="5" id="brushSlider">
-        </button>
-
-        <!-- fill color picker -->
-        <div id="fill" class="color-label"></div>
-        <div id="color-picker-fill" class="color-picker">
-            <canvas id="color-block-fill" class="color-block" height="150" width="150"></canvas>
-            <canvas id="color-strip-fill" class="color-strip" height="150" width="30"></canvas>
-            <div class="rgb-field">
-                R<input class="input" id="fill-r" type="text" maxlength="3">
-                G<input class="input" id="fill-g" type="text" maxlength="3">
-                B<input class="input" id="fill-b" type="text" maxlength="3">
+            <div id="canvas-brush">
+                <canvas id="show-brush" height="40" width="40"></canvas>
             </div>
         </div>
         <!-- stroke color picker -->
@@ -93,6 +82,17 @@
                 B<input class="input" id="stroke-b" type="text">
             </div>
         </div>
+        <!-- fill color picker -->
+        <div id="fill" class="color-label"></div>
+        <div id="color-picker-fill" class="color-picker">
+            <canvas id="color-block-fill" class="color-block" height="150" width="150"></canvas>
+            <canvas id="color-strip-fill" class="color-strip" height="150" width="30"></canvas>
+            <div class="rgb-field">
+                R<input class="input" id="fill-r" type="text" maxlength="3">
+                G<input class="input" id="fill-g" type="text" maxlength="3">
+                B<input class="input" id="fill-b" type="text" maxlength="3">
+            </div>
+        </div>
         <!-- background color picker -->
         <div id="bg" class="color-label"></div>
         <div id="color-picker-bg" class="color-picker">
@@ -104,7 +104,7 @@
                 B<input class="input" id="bg-b" type="text">
             </div>
         </div>
-
+        <!-- canvas control functions -->
         <span class="btn btn-danger" id="eraser">
             <i class="fas fa-eraser"></i>
         </span>
@@ -126,41 +126,49 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <script src="canvas-common.js"></script>
-    <script src="pencil.js"></script>
-    <script src="draw-line.js"></script>
-    <script src="quadratic-curve.js"></script>
-    <script src="bezier-curve.js"></script>
-    <script src="draw-rectangle.js"></script>
-    <script src="draw-circle.js"></script>
-    <script src="color-picker-fill.js"></script>
-    <script src="color-picker-stroke.js"></script>
-    <script src="color-picker-bg.js"></script>
-    <script src="eraser.js"></script>
-    <script src="download.js"></script>
-    <script src="draw-history.js"></script>
-    <script src="paint-bucket.js"></script>
-
+    <!-- canvas control -->
+    <script src="scripts/canvas-common.js"></script>
+    <script src="scripts/upload.js"></script>
+    <script src="scripts/download.js"></script>
+    <script src="scripts/draw-history.js"></script>
+    <!-- color -->
+    <script src="scripts/color-picker-fill.js"></script>
+    <script src="scripts/color-picker-stroke.js"></script>
+    <script src="scripts/color-picker-bg.js"></script>
+    <script src="scripts/paint-bucket.js"></script>
+    <!-- draw -->
+    <script src="scripts/brush-size.js"></script>
+    <script src="scripts/pencil.js"></script>
+    <script src="scripts/draw-line.js"></script>
+    <script src="scripts/quadratic-curve.js"></script>
+    <script src="scripts/bezier-curve.js"></script>
+    <script src="scripts/eraser.js"></script>
+    <script src="scripts/draw-rectangle.js"></script>
+    <script src="scripts/draw-circle.js"></script>
+    
+<<<<<<< HEAD
+    <script src="scripts/common.js"></script>
+=======
     <script type='text/javascript'>
-        var imageLoader = document.getElementById('upload'); // Get Upload Button
-        imageLoader.addEventListener('change', handleImage, false); // Get Upload Button Change
-        var canvas = document.getElementById('canvas-real'); // Get Canvas Real
-        var ctx = canvas.getContext('2d'); // Get Context Real
-
         initCanvas();
+
+        var imageLoader = document.getElementById('upload');
+        imageLoader.addEventListener('change', handleImage, false);
 
         function handleImage(e) {
             var reader = new FileReader();
             reader.onload = function(event) {
                 var img = new Image();
                 img.onload = function() {
-                    ctx.drawImage(img, canvas.width * 0.5 - img.width * 0.5, canvas.height * 0.5 - img.height * 0.5);
+                    contextReal.drawImage(img, canvasReal.width * 0.5 - img.width * 0.5, canvasReal.height * 0.5 - img.height * 0.5);
+                    var snap = document.getElementById('canvas-real').toDataURL();
+                    savehistory.push(snap);
+                    currentIndex = savehistory.length - 1;
+                    console.log('snap');
                 }
                 img.src = event.target.result;
             }
             reader.readAsDataURL(e.target.files[0]);
-            console.log('e: ' + e);
         }
 
         $('#drawing-rectangle').click(() => {
@@ -217,6 +225,6 @@
 
         currentFunction = new DrawingPencil(contextReal, contextDraft);
     </script>
+>>>>>>> 89c874bdbff5ee4fa89989e2baa66630081a11fc
 </body>
-
 </html>

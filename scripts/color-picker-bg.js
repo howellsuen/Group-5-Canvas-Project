@@ -28,7 +28,7 @@ let xb = 0;
 let yb = 0;
 let dragb = false;
 
-let rgbaColorBg = 'rgba(255, 0, 0, 1)';
+let rgbaColorBg = 'rgba(255, 255, 255, 1)';
 
 let matchBg = rgbaColorBg.match(matchColors);
 Rbg.value = matchBg[1];
@@ -101,6 +101,7 @@ function changeColorBg(e) {
   Bbg.value = imageData[2];
   contextReal.fillStyle = rgbaColorBg;
   contextReal.fillRect(0,0,canvasDraft.width,canvasDraft.height);
+  onFinish = true;
 }
 
 colorStripBg.addEventListener("click", click, false);

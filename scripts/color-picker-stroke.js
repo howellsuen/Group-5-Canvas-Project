@@ -28,7 +28,7 @@ let xs = 0;
 let ys = 0;
 let drags = false;
 
-let rgbaColorStroke = 'rgba(255, 0, 0, 1)';
+let rgbaColorStroke = 'rgba(15, 150, 150, 1)';
 
 let matchStroke = rgbaColorStroke.match(matchColors);
 Rstroke.value = matchStroke[1];

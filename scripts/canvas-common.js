@@ -9,23 +9,15 @@ canvasDraft.width = window.innerWidth;
 canvasDraft.height = window.innerHeight;
 
 let currentFunction;
-
+let onFinish = false;
 let savehistory = [];
 // let currentIndex = 0;
 
 let dragging = false;
 
-//brushsize
-let brushSlider = document.getElementById("brushSlider");
-let brushSize = 5;
-
 function initCanvas(){
     snap();
 }
-
-brushSlider.addEventListener("change", function() {
-    brushSize = brushSlider.value;
-});
 
 $('#canvas-draft').mousedown(function(e) {
     let mouseX = e.pageX - this.offsetLeft;
@@ -48,7 +40,12 @@ $('#canvas-draft').mouseup(function(e) {
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
     currentFunction.onMouseUp([mouseX, mouseY], e);
-    snap();
+    if(onFinish === true){
+        snap();
+        onFinish = false;
+    }else{
+        console.log('Action not finish');
+    }
 });
 
 $('#canvas-draft').mouseleave(function(e) {
@@ -69,6 +66,12 @@ $('#canvas-draft').dblclick(function(e) {
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
     currentFunction.onDblClick([mouseX, mouseY], e);
+    if(onFinish === true){
+        snap();
+        onFinish = false;
+    }else{
+        console.log('Action not finish');
+    }
 });
 
 function snap() {

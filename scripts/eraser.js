@@ -8,7 +8,7 @@ class Eraser extends PaintFunction{
         this.context.strokeStyle = rgbaColorBg;
         this.context.lineJoin = "round";
         this.context.lineCap = "round";
-        this.context.lineWidth = 10;
+        this.context.lineWidth = brushSize;
         this.context.beginPath();
         this.context.moveTo(coord[0],coord[1]);
         this.draw(coord[0],coord[1]);
@@ -18,7 +18,9 @@ class Eraser extends PaintFunction{
     }
 
     onMouseMove(){}
-    onMouseUp(){}
+    onMouseUp(){
+        onFinish = true;
+    }
     onMouseLeave(){}
     onMouseEnter(){}
 

@@ -87,7 +87,9 @@ class PaintBucket extends PaintFunction {
 
     onDragging() {}
     onMouseMove() {}
-    onMouseUp() {}
+    onMouseUp() {
+        onFinish = true;
+    }
     onMouseLeave() {}
     onMouseEnter() {}
     onDblClick() {}

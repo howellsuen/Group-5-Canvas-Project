@@ -26,8 +26,9 @@ class DrawingRectangle extends PaintFunction{
     onMouseUp(coord){
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextReal.fillRect(this.origX, this.origY, coord[0]- this.origX, coord[1] - this.origY);
-        this.contextReal.strokeRect(this.origX, this.origY, coord[0]- this.origX, coord[1] - this.origY)
-        this.contextReal.strokeRect(this.origX, this.origY, coord[0]- this.origX, coord[1] - this.origY)
+        this.contextReal.strokeRect(this.origX, this.origY, coord[0]- this.origX, coord[1] - this.origY);
+        this.contextReal.strokeRect(this.origX, this.origY, coord[0]- this.origX, coord[1] - this.origY);
+        onFinish = true;
     }
     onMouseLeave(){}
     onMouseEnter(){}
@@ -51,13 +52,14 @@ class DrawingRectangleOutline extends PaintFunction{
         this.contextDraft.strokeStyle = rgbaColorStroke;
         this.contextDraft.lineWidth = brushSize;
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
-        this.contextDraft.strokeRect(this.origX, this.origY, coord[0]- this.origX, coord[1] - this.origY)
+        this.contextDraft.strokeRect(this.origX, this.origY, coord[0]- this.origX, coord[1] - this.origY);
     }
 
     onMouseMove(){}
     onMouseUp(coord){
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
-        this.contextReal.strokeRect(this.origX, this.origY, coord[0]- this.origX, coord[1] - this.origY)
+        this.contextReal.strokeRect(this.origX, this.origY, coord[0]- this.origX, coord[1] - this.origY);
+        onFinish = true;
     }
     onMouseLeave(){}
     onMouseEnter(){}
