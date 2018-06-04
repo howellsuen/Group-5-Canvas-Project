@@ -17,13 +17,11 @@ class PaintBucket extends PaintFunction {
         let maxLoop = 10000000;
         let loop = 0;
 
-        let pixelStack = [
-            [coord[0], coord[1]]
-        ];
+        let pixelStack = new Set([coord[0], coord[1]]);
 
-        while (pixelStack.length && loop < maxLoop) {
+        while (pixelStack.size && loop < maxLoop) {
             var newPos, x, y, pixelPos, reachLeft, reachRight;
-            newPos = pixelStack.pop();
+            newPos = pixelStack.delete();
             x = newPos[0];
             y = newPos[1];
 
@@ -41,7 +39,7 @@ class PaintBucket extends PaintFunction {
                 if (x > 0) {
                     if (matchStartColor(pixelPos - 4)) {
                         if (!reachLeft) {
-                            pixelStack.push([x - 1, y]);
+                            pixelStack.add([x - 1, y]);
                             reachLeft = true;
                         }
                     } else if (reachLeft) {
@@ -52,7 +50,7 @@ class PaintBucket extends PaintFunction {
                 if (x < canvasWidth - 1) {
                     if (matchStartColor(pixelPos + 4)) {
                         if (!reachRight) {
-                            pixelStack.push([x + 1, y]);
+                            pixelStack.add([x + 1, y]);
                             reachRight = true;
                         }
                     } else if (reachRight) {

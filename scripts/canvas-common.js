@@ -18,6 +18,7 @@ let dragging = false;
 function initCanvas(){
     snap();
 }
+initCanvas();
 
 $('#canvas-draft').mousedown(function(e) {
     let mouseX = e.pageX - this.offsetLeft;

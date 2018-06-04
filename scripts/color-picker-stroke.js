@@ -15,19 +15,22 @@ let Gstroke = document.getElementById('stroke-g');
 let Bstroke = document.getElementById('stroke-b');
 
 //show and hide color
-function show(e) {
-    if (e.target == strokeLabel) {
-        colorPickerStroke.style.display = "block";
-    } else if (e.target == canvasReal || e.target == canvasDraft || e.target == tool[0]) {
-        colorPickerStroke.style.display = "none";
-    }
-}
-
 function hide() {
     colorPickerStroke.style.display = "none";
 }
 
-document.addEventListener("click", show, false);
+function canvasRealStroke(e) {
+    e.stopPropagation();
+    colorPickerStroke.style.display = "none";
+}
+
+function strokeLabelClick(e) {
+    e.stopPropagation();
+    colorPickerStroke.style.display = "block";
+}
+
+canvasReal.addEventListener("click", canvasRealStroke, false);
+strokeLabel.addEventListener("click", strokeLabelClick, false);
 document.addEventListener("dblclick", hide, false);
 
 let xs = 0;
@@ -117,7 +120,7 @@ colorBlockStroke.addEventListener("mousemove", mousemove, false);
 // input rgb by text
 function typeColor(e) {
     if (isNaN(this.value) || this.value > 255 || this.value < 0) {
-        this.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
+        this.style.backgroundColor = "rgba(252, 171, 171, 1)";
     } else {
         rgbaColorStroke = 'rgba(' + Rstroke.value + ',' + Gstroke.value + ',' + Bstroke.value + ',1)';
         strokeLabel.style.backgroundColor = rgbaColorStroke;

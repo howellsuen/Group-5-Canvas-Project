@@ -18,19 +18,22 @@ let G = document.getElementById('fill-g');
 let B = document.getElementById('fill-b');
 
 //show and hide color
-function show(e) {
-    if (e.target == fillLabel) {
-        colorPickerFill.style.display = "block";
-    } else if (e.target == canvasReal || e.target == canvasDraft || e.target == tool[0]) {
-        colorPickerFill.style.display = "none";
-    }
-}
-
 function hide() {
     colorPickerFill.style.display = "none";
 }
 
-document.addEventListener("click", show, false);
+function canvasRealClick(e) {
+    e.stopPropagation();
+    colorPickerFill.style.display = "none";
+}
+
+function fillLabelClick(e) {
+    e.stopPropagation();
+    colorPickerFill.style.display = "block";
+}
+
+canvasReal.addEventListener("click", canvasRealClick, false);
+fillLabel.addEventListener("click", fillLabelClick, false);
 document.addEventListener("dblclick", hide, false);
 
 let x = 0;
@@ -120,7 +123,7 @@ colorBlockFill.addEventListener("mousemove", mousemove, false);
 // input rgb by text
 function typeColor(e) {
     if (isNaN(this.value) || this.value > 255 || this.value < 0) {
-        this.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
+        this.style.backgroundColor = "rgba(252, 171, 171, 1)";
     } else {
         rgbaColor = 'rgba(' + R.value + ',' + G.value + ',' + B.value + ',1)';
         fillLabel.style.backgroundColor = rgbaColor;

@@ -3,8 +3,6 @@ var imageLoader = document.getElementById('upload'); // Get Upload Button
         var canvas = document.getElementById('canvas-real'); // Get Canvas Real
         var ctx = canvas.getContext('2d'); // Get Context Real
 
-        initCanvas();
-
         function handleImage(e) {
             var reader = new FileReader();
             reader.onload = function(event) {

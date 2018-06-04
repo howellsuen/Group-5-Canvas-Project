@@ -15,19 +15,22 @@ let Gbg = document.getElementById('bg-g');
 let Bbg = document.getElementById('bg-b');
 
 //show and hide color
-function show(e) {
-    if (e.target == bgLabel) {
-        colorPickerBg.style.display = "block";
-    } else if (e.target == canvasReal || e.target == canvasDraft || e.target == tool[0]) {
-        colorPickerBg.style.display = "none";
-    }
-}
-
 function hide() {
     colorPickerBg.style.display = "none";
 }
 
-document.addEventListener("click", show, false);
+function canvasRealBg(e) {
+    e.stopPropagation();
+    colorPickerBg.style.display = "none";
+}
+
+function bgLabelClick(e) {
+    e.stopPropagation();
+    colorPickerBg.style.display = "block";
+}
+
+canvasReal.addEventListener("click", canvasRealBg, false);
+bgLabel.addEventListener("click", bgLabelClick, false);
 document.addEventListener("dblclick", hide, false);
 
 let xb = 0;
