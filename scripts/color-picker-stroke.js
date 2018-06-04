@@ -22,7 +22,13 @@ function show(e) {
         colorPickerStroke.style.display = "none";
     }
 }
+
+function hide() {
+    colorPickerStroke.style.display = "none";
+}
+
 document.addEventListener("click", show, false);
+document.addEventListener("dblclick", hide, false);
 
 let xs = 0;
 let ys = 0;

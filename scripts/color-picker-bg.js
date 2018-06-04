@@ -16,13 +16,19 @@ let Bbg = document.getElementById('bg-b');
 
 //show and hide color
 function show(e) {
-  if (e.target == bgLabel) {
-    colorPickerBg.style.display = "block";
-  } else if (e.target == canvasReal || e.target == canvasDraft || e.target == tool[0]) {
-    colorPickerBg.style.display = "none";
-  }
+    if (e.target == bgLabel) {
+        colorPickerBg.style.display = "block";
+    } else if (e.target == canvasReal || e.target == canvasDraft || e.target == tool[0]) {
+        colorPickerBg.style.display = "none";
+    }
 }
+
+function hide() {
+    colorPickerBg.style.display = "none";
+}
+
 document.addEventListener("click", show, false);
+document.addEventListener("dblclick", hide, false);
 
 let xb = 0;
 let yb = 0;
@@ -51,57 +57,57 @@ ctx2bg.fillStyle = grdbg;
 ctx2bg.fill();
 
 function click(e) {
-  xb = e.offsetX;
-  yb = e.offsetY;
-  let imageData = ctx2bg.getImageData(xb, yb, 1, 1).data;
-  rgbaColorBg = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
-  fillGradientBg();
+    xb = e.offsetX;
+    yb = e.offsetY;
+    let imageData = ctx2bg.getImageData(xb, yb, 1, 1).data;
+    rgbaColorBg = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
+    fillGradientBg();
 }
 
 function fillGradientBg() {
-  ctx1bg.fillStyle = rgbaColorBg;
-  ctx1bg.fillRect(0, 0, width1bg, height1bg);
+    ctx1bg.fillStyle = rgbaColorBg;
+    ctx1bg.fillRect(0, 0, width1bg, height1bg);
 
-  let grdbgWhite = ctx2bg.createLinearGradient(0, 0, width1bg, 0);
-  grdbgWhite.addColorStop(0, 'rgba(255,255,255,1)');
-  grdbgWhite.addColorStop(1, 'rgba(255,255,255,0)');
-  ctx1bg.fillStyle = grdbgWhite;
-  ctx1bg.fillRect(0, 0, width1bg, height1bg);
+    let grdbgWhite = ctx2bg.createLinearGradient(0, 0, width1bg, 0);
+    grdbgWhite.addColorStop(0, 'rgba(255,255,255,1)');
+    grdbgWhite.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx1bg.fillStyle = grdbgWhite;
+    ctx1bg.fillRect(0, 0, width1bg, height1bg);
 
-  let grdbgBlack = ctx2bg.createLinearGradient(0, 0, 0, height1bg);
-  grdbgBlack.addColorStop(0, 'rgba(0,0,0,0)');
-  grdbgBlack.addColorStop(1, 'rgba(0,0,0,1)');
-  ctx1bg.fillStyle = grdbgBlack;
-  ctx1bg.fillRect(0, 0, width1bg, height1bg);
+    let grdbgBlack = ctx2bg.createLinearGradient(0, 0, 0, height1bg);
+    grdbgBlack.addColorStop(0, 'rgba(0,0,0,0)');
+    grdbgBlack.addColorStop(1, 'rgba(0,0,0,1)');
+    ctx1bg.fillStyle = grdbgBlack;
+    ctx1bg.fillRect(0, 0, width1bg, height1bg);
 }
 
 function mousedown(e) {
-  dragb = true;
-  changeColorBg(e);
+    dragb = true;
+    changeColorBg(e);
 }
 
 function mousemove(e) {
-  if (dragb) {
-    changeColorBg(e);
-  }
+    if (dragb) {
+        changeColorBg(e);
+    }
 }
 
 function mouseup(e) {
-  dragb = false;
+    dragb = false;
 }
 
 function changeColorBg(e) {
-  xb = e.offsetX;
-  yb = e.offsetY;
-  let imageData = ctx1bg.getImageData(xb, yb, 1, 1).data;
-  rgbaColorBg = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
-  bgLabel.style.backgroundColor = rgbaColorBg;
-  Rbg.value = imageData[0];
-  Gbg.value = imageData[1];
-  Bbg.value = imageData[2];
-  contextReal.fillStyle = rgbaColorBg;
-  contextReal.fillRect(0,0,canvasDraft.width,canvasDraft.height);
-  onFinish = true;
+    xb = e.offsetX;
+    yb = e.offsetY;
+    let imageData = ctx1bg.getImageData(xb, yb, 1, 1).data;
+    rgbaColorBg = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
+    bgLabel.style.backgroundColor = rgbaColorBg;
+    Rbg.value = imageData[0];
+    Gbg.value = imageData[1];
+    Bbg.value = imageData[2];
+    contextReal.fillStyle = rgbaColorBg;
+    contextReal.fillRect(0, 0, canvasDraft.width, canvasDraft.height);
+    onFinish = true;
 }
 
 colorStripBg.addEventListener("click", click, false);
@@ -113,14 +119,14 @@ colorBlockBg.addEventListener("mousemove", mousemove, false);
 
 // input rgb by text
 function typeColor(e) {
-  if (isNaN(this.value) || this.value >255 || this.value <0) {
-    this.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
-  } else {
-    rgbaColorBg = 'rgba(' + Rbg.value + ',' + Gbg.value + ',' + Bbg.value + ',1)';
-    bgLabel.style.backgroundColor = rgbaColorBg; 
-    fillGradientBg();
-    this.style.backgroundColor = "";
-  }
+    if (isNaN(this.value) || this.value > 255 || this.value < 0) {
+        this.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
+    } else {
+        rgbaColorBg = 'rgba(' + Rbg.value + ',' + Gbg.value + ',' + Bbg.value + ',1)';
+        bgLabel.style.backgroundColor = rgbaColorBg;
+        fillGradientBg();
+        this.style.backgroundColor = "";
+    }
 }
 
 Rbg.addEventListener("input", typeColor, false);

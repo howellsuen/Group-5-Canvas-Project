@@ -19,13 +19,19 @@ let B = document.getElementById('fill-b');
 
 //show and hide color
 function show(e) {
-  if (e.target == fillLabel) {
-    colorPickerFill.style.display = "block";
-  } else if (e.target == canvasReal || e.target == canvasDraft || e.target == tool[0]) {
-    colorPickerFill.style.display = "none";
-  }
+    if (e.target == fillLabel) {
+        colorPickerFill.style.display = "block";
+    } else if (e.target == canvasReal || e.target == canvasDraft || e.target == tool[0]) {
+        colorPickerFill.style.display = "none";
+    }
 }
+
+function hide() {
+    colorPickerFill.style.display = "none";
+}
+
 document.addEventListener("click", show, false);
+document.addEventListener("dblclick", hide, false);
 
 let x = 0;
 let y = 0;
@@ -54,54 +60,54 @@ ctx2.fillStyle = grd1;
 ctx2.fill();
 
 function click(e) {
-  x = e.offsetX;
-  y = e.offsetY;
-  let imageData = ctx2.getImageData(x, y, 1, 1).data;
-  rgbaColor = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
-  fillGradient();
+    x = e.offsetX;
+    y = e.offsetY;
+    let imageData = ctx2.getImageData(x, y, 1, 1).data;
+    rgbaColor = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
+    fillGradient();
 }
 
 function fillGradient() {
-  ctx1.fillStyle = rgbaColor;
-  ctx1.fillRect(0, 0, width1, height1);
+    ctx1.fillStyle = rgbaColor;
+    ctx1.fillRect(0, 0, width1, height1);
 
-  let grdWhite = ctx2.createLinearGradient(0, 0, width1, 0);
-  grdWhite.addColorStop(0, 'rgba(255,255,255,1)');
-  grdWhite.addColorStop(1, 'rgba(255,255,255,0)');
-  ctx1.fillStyle = grdWhite;
-  ctx1.fillRect(0, 0, width1, height1);
+    let grdWhite = ctx2.createLinearGradient(0, 0, width1, 0);
+    grdWhite.addColorStop(0, 'rgba(255,255,255,1)');
+    grdWhite.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx1.fillStyle = grdWhite;
+    ctx1.fillRect(0, 0, width1, height1);
 
-  let grdBlack = ctx2.createLinearGradient(0, 0, 0, height1);
-  grdBlack.addColorStop(0, 'rgba(0,0,0,0)');
-  grdBlack.addColorStop(1, 'rgba(0,0,0,1)');
-  ctx1.fillStyle = grdBlack;
-  ctx1.fillRect(0, 0, width1, height1);
+    let grdBlack = ctx2.createLinearGradient(0, 0, 0, height1);
+    grdBlack.addColorStop(0, 'rgba(0,0,0,0)');
+    grdBlack.addColorStop(1, 'rgba(0,0,0,1)');
+    ctx1.fillStyle = grdBlack;
+    ctx1.fillRect(0, 0, width1, height1);
 }
 
 function mousedown(e) {
-  drag = true;
-  changeColor(e);
+    drag = true;
+    changeColor(e);
 }
 
 function mousemove(e) {
-  if (drag) {
-    changeColor(e);
-  }
+    if (drag) {
+        changeColor(e);
+    }
 }
 
 function mouseup(e) {
-  drag = false;
+    drag = false;
 }
 
 function changeColor(e) {
-  x = e.offsetX;
-  y = e.offsetY;
-  let imageData = ctx1.getImageData(x, y, 1, 1).data;
-  rgbaColor = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
-  fillLabel.style.backgroundColor = rgbaColor;
-  R.value = imageData[0];
-  G.value = imageData[1];
-  B.value = imageData[2];
+    x = e.offsetX;
+    y = e.offsetY;
+    let imageData = ctx1.getImageData(x, y, 1, 1).data;
+    rgbaColor = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
+    fillLabel.style.backgroundColor = rgbaColor;
+    R.value = imageData[0];
+    G.value = imageData[1];
+    B.value = imageData[2];
 }
 
 colorStripFill.addEventListener("click", click, false);
@@ -113,14 +119,14 @@ colorBlockFill.addEventListener("mousemove", mousemove, false);
 
 // input rgb by text
 function typeColor(e) {
-  if (isNaN(this.value) || this.value >255 || this.value <0) {
-    this.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
-  } else {
-    rgbaColor = 'rgba(' + R.value + ',' + G.value + ',' + B.value + ',1)';
-    fillLabel.style.backgroundColor = rgbaColor;
-    fillGradient();
-    this.style.backgroundColor = "";
-  }
+    if (isNaN(this.value) || this.value > 255 || this.value < 0) {
+        this.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
+    } else {
+        rgbaColor = 'rgba(' + R.value + ',' + G.value + ',' + B.value + ',1)';
+        fillLabel.style.backgroundColor = rgbaColor;
+        fillGradient();
+        this.style.backgroundColor = "";
+    }
 }
 
 R.addEventListener("input", typeColor, false);
