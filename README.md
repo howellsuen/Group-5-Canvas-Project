@@ -21,7 +21,7 @@ Currently supports usage on desktop browser.
 
 ## Deployment
 
-Project can also be found at [Surge.sh](http://name.surge.sh/)
+Project can also be found at [Surge.sh](http://awesome-canvas.surge.sh/)
 
 ## Built With
 
